@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Jakub Wołynko">
+    <meta name="description" content="Clean and minimal blog about IT">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to use GitHub Pages #1"/>
+<meta name="twitter:description" content="GitHub page at the hard way"/>
+
+    <meta property="og:title" content="How to use GitHub Pages #1" />
+<meta property="og:description" content="GitHub page at the hard way" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/how-to-gp-1/" />
+<meta property="article:published_time" content="2020-02-24T21:55:02+00:00" />
+<meta property="article:modified_time" content="2020-02-24T21:55:02+00:00" />
+
+
+
+    
+      <base href="/posts/how-to-gp-1/">
+    
+    <title>
+  How to use GitHub Pages #1 · Personal blog
+</title>
+
+    
+      <link rel="canonical" href="/posts/how-to-gp-1/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css" integrity="sha256-pPMyITohzo61IWcMYURwxYkjqq84XipzmCwx3XZC3ss=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.65.3" />
+  </head>
+
+  
+  
+  <body class="colorscheme-light">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Personal blog
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="/about/">About</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">How to use GitHub Pages #1</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-02-24T21:55:02Z'>
+                February 24, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              6-minute read
+            </span>
+          </div>
+          <div class="categories">
+  <i class="fas fa-folder"></i>
+    <a href="/categories/tutorials/">tutorials</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <p>Everyone sometimes think about personal website. Nothing fancy, just static content with clever topics&hellip; sounds easy isn&rsquo;t it? The only problem is how to host this page and how to do it fast (and as cheap as is possible). So where comes <a href="https://pages.github.com/">GitHub Page</a>. The main reason why I choose this solution is the price and domain. <a href="https://3sky.github.io">https://3sky.github.io</a> will look cool, almost professional. The question is why I will do it harder than it&rsquo;s recommended? Answer is simple, because I can. Technology is all about curiosity and people whose like do stuffs. After short introduction let&rsquo;s start.</p>
+<h2 id="used-tools-for-part-1">Used tools for part #1</h2>
+<ul>
+<li>Google Cloud Platform</li>
+<li>Terraform</li>
+<li>Hugo</li>
+<li>Nginx</li>
+</ul>
+<h2 id="terraform">Terraform</h2>
+<p><a href="https://www.terraform.io/">Terraform </a> is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.</p>
+<h3 id="why">Why?</h3>
+<p>It&rsquo;s very popular tool - I always want to learn how to use it. More or less in correct way. Also managing infrastructure as a code it’s so satisfying.</p>
+<h4 id="lets-code">Let&rsquo;s code</h4>
+<ol>
+<li>
+<p>Getting project credentials.</p>
+<p>Set up a service account key, which Terraform will use to create and manage resources in your GCP project. Go to the <a href="https://console.cloud.google.com/apis/credentials/serviceaccountkey">create service account key page</a>. Select the default service account or create a new one, select JSON as the key type, and click Create.</p>
+<p>This downloads a JSON file with all the credentials that will be needed for Terraform to manage the resources. This file should be located in a secure place for production projects, but for this example move the downloaded JSON file to the project directory. We will call this file <code>auth.json</code></p>
+</li>
+<li>
+<p>Create <code>main.tf</code></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="">//</span> <span style="">Set</span> <span style="">local</span> <span style="">variable</span>
+<span style="">locals</span> {
+    <span style="">region_eu</span> <span style="">=</span> <span style="font-weight:bold">&#34;europe-west3-a&#34;</span>
+    <span style="">project_name</span> <span style="">=</span> <span style="font-style:italic">&#34;tokyo-baton-256120&#34;</span>
+}
+
+
+<span style="">provider</span> <span style="font-style:italic">&#34;google&#34;</span> {
+    <span style="">credentials</span> <span style="">=</span> <span style="">file(</span><span style="font-weight:bold">&#34;auth.json&#34;</span><span style="">)</span>     <span style="">//</span> <span style="">path</span> <span style="">to</span> <span style="">`auth.json`</span>
+    <span style="">project</span>     <span style="">=</span> <span style="">local.project_name</span>
+    <span style="">region</span>      <span style="">=</span> <span style="">local.region_eu</span>
+}
+
+
+<span style="">//</span> <span style="">Terraform</span> <span style="">plugin</span> <span style="">for</span> <span style="">creating</span> <span style="">random</span> <span style="">ids</span>
+<span style="">resource</span> <span style="font-style:italic">&#34;random_id&#34;</span> <span style="font-style:italic">&#34;instance_id&#34;</span> {
+    <span style="">byte_length</span> <span style="">=</span> <span style="">8</span>
+}
+
+<span style="">//</span> <span style="">A</span> <span style="">single</span> <span style="">Google</span> <span style="">Cloud</span> <span style="">Engine</span> <span style="">instance</span>
+<span style="">resource</span> <span style="font-style:italic">&#34;google_compute_instance&#34;</span> <span style="font-style:italic">&#34;default&#34;</span> {
+    <span style="">count</span> <span style="">=</span> <span style="">1</span>                                         <span style="">//</span> <span style="">count</span> <span style="">of</span> <span style="">instances</span>
+    <span style="">name</span>         <span style="">=</span> <span style="font-weight:bold">&#34;app-${random_id.instance_id.hex}&#34;</span> <span style="">//</span> <span style="">define</span> <span style="">name</span> <span style="">with</span> <span style="">random_id</span> <span style="">plugin</span>
+    <span style="">machine_type</span> <span style="">=</span> <span style="font-style:italic">&#34;f1-micro&#34;</span>                         <span style="">//</span> <span style="">size</span> <span style="">of</span> <span style="">instance</span>
+    <span style="">zone</span>         <span style="">=</span> <span style="">local.region_eu</span>
+
+<span style="">boot_disk</span> {
+    <span style="">initialize_params</span> <span style="">{</span>
+        <span style="">image</span> <span style="">=</span> <span style="font-weight:bold">&#34;ubuntu-1804-bionic-v20200129a&#34;</span> <span style="">//</span> <span style="">image</span> <span style="">from</span> <span style="">GCP</span> <span style="">image</span> <span style="">list</span>
+    }
+}
+
+<span style="">metadata</span> <span style="">=</span> {
+    <span style="">ssh-keys</span> <span style="">=</span> <span style="font-weight:bold">&#34;kuba:${file(&#34;</span><span style="">~/.ssh/id_rsa.pub</span><span style="font-style:italic">&#34;)}&#34;</span> <span style="">//</span> <span style="">existing</span> <span style="">ssh</span> <span style="">key</span> <span style="">of</span> <span style="">kuba&#39;s</span>
+}
+
+<span style="">//</span> <span style="">Make</span> <span style="">sure</span> <span style="">nginx</span> <span style="">is</span> <span style="">installed</span> <span style="">on</span> <span style="">all</span> <span style="">new</span> <span style="">instances</span> <span style="">for</span> <span style="">later</span> <span style="">steps</span>
+<span style="">metadata_startup_script</span> <span style="">=</span> <span style="font-style:italic">&#34;sudo apt-get update; sudo apt-get install -yq nginx; &#34;</span>
+
+<span style="">network_interface</span> {
+    <span style="">network</span> <span style="">=</span> <span style="font-weight:bold">&#34;default&#34;</span>
+        <span style="">access_config</span> {}
+    }
+<span style="">}</span>
+
+
+<span style="">data</span> <span style="font-style:italic">&#34;google_compute_subnetwork&#34;</span> <span style="font-style:italic">&#34;my-subnetwork&#34;</span> {
+    <span style="">name</span>   <span style="">=</span> <span style="font-weight:bold">&#34;default-${local.region_eu}&#34;</span>
+    <span style="">region</span> <span style="">=</span> <span style="font-style:italic">&#34;europe-west3&#34;</span>
+}
+
+<span style="">//</span> <span style="">app-firewall</span> <span style="">open</span> <span style="">for</span> <span style="">incoming</span> <span style="">request</span> <span style="">on</span> <span style="">port</span> 80
+<span style="">resource</span> <span style="font-style:italic">&#34;google_compute_firewall&#34;</span> <span style="font-style:italic">&#34;default&#34;</span> {
+    <span style="">name</span>    <span style="">=</span> <span style="font-weight:bold">&#34;app-firewall&#34;</span>
+    <span style="">network</span> <span style="">=</span> <span style="font-style:italic">&#34;default&#34;</span>
+
+    <span style="">allow</span> {
+        <span style="">protocol</span> <span style="">=</span> <span style="font-weight:bold">&#34;tcp&#34;</span>
+        <span style="">ports</span>    <span style="">=</span> [<span style="font-style:italic">&#34;80&#34;</span>]
+    }
+}
+
+<span style="">//</span> <span style="">A</span> <span style="">variable</span> <span style="">for</span> <span style="">extracting</span> <span style="">the</span> <span style="">external</span> <span style="">ip</span> <span style="">of</span> <span style="">the</span> <span style="">instance</span>
+<span style="">output</span> <span style="font-style:italic">&#34;ip&#34;</span> {
+    <span style="">value</span> <span style="">=</span> <span style="font-weight:bold">&#34;${google_compute_instance.default.0.network_interface.0.access_config.0.nat_ip}&#34;</span>
+}
+</code></pre></div></li>
+<li>
+<p>Initialize a working directory containing Terraform configuration files</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">terraform init
+</code></pre></div></li>
+<li>
+<p>Apply the changes required to reach the desired state of the configuration</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">teraform apply
+</code></pre></div></li>
+<li>
+<p>Connect to instance via ssh</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh user@ip
+
+<span style="font-style:italic"># user = form line `metadata` secion</span>
+<span style="font-style:italic"># ip = from `ip` variable output</span>
+<span style="font-style:italic"># Example</span>
+<span style="font-style:italic"># ssh kuba@35.123.25.1</span>
+</code></pre></div></li>
+<li>
+<p>Destroy the Terraform-managed infrastructure</p>
+<p><code>WARNING</code> - At the end of learning session destroy unused infrastructure - it&rsquo;s cheaper</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">terraform destroy
+</code></pre></div></li>
+</ol>
+<h4 id="summary">Summary</h4>
+<p>That was easy isn&rsquo;t it? But remember it&rsquo;s infrastructure working on someone&rsquo;s else machines - you need to pay for it. Use Terraform wisely.</p>
+<h2 id="hugo">Hugo</h2>
+<p><a href="https://gohugo.io/">Hugo</a> is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again</p>
+<h3 id="why-1">Why?</h3>
+<p>Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was easy.</p>
+<h4 id="lets-code-1">Let&rsquo;s code</h4>
+<ol>
+<li>
+<p>Install Hugo with correct version</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo snap install hugo
+</code></pre></div></li>
+<li>
+<p>Generate new site</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site &lt;page-name&gt;
+
+<span style="font-style:italic"># Example</span>
+<span style="font-style:italic"># hugo new site 3sky.io</span>
+</code></pre></div></li>
+<li>
+<p>Go inside new project directory</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd &lt;page-name&gt;
+<span style="font-style:italic"># Exxample</span>
+<span style="font-style:italic"># cd 3sky.io</span>
+</code></pre></div></li>
+<li>
+<p>Select theme from <a href="https://themes.gohugo.io/">Hugo Themes</a></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git init
+git submodule add &lt;url of themes from github&gt; themes/&lt;themes name&gt;
+<span style="font-style:italic"># Example</span>
+<span style="font-style:italic"># git submodule add https://github.com/luizdepra/hugo-coder.git themes/hugo-coder</span>
+</code></pre></div></li>
+<li>
+<p>Configure your <code>config.toml</code></p>
+<ol>
+<li>
+<p>Open <code>config.toml</code></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim config.toml
+</code></pre></div></li>
+<li>
+<p>Setup minimal config</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">title = <span style="font-style:italic">&#34;Personal blog&#34;</span>
+theme = <span style="font-style:italic">&#34;hugo-coder&#34;</span>
+languagecode = <span style="font-style:italic">&#34;en&#34;</span>
+defaultcontentlanguage = <span style="font-style:italic">&#34;en&#34;</span>
+paginate = 20
+canonifyurls = <span style="font-weight:bold">true</span>
+pygmentsstyle = <span style="font-style:italic">&#34;bw&#34;</span>
+pygmentscodefences = <span style="font-weight:bold">true</span>
+pygmentscodefencesguesssyntax = <span style="font-weight:bold">true</span>
+
+[params]
+    author = <span style="font-style:italic">&#34;Jakub Wołynko&#34;</span>
+    info = <span style="font-style:italic">&#34;IT Developer&#34;</span>
+    description = <span style="font-style:italic">&#34;Clean and minimal blog about IT&#34;</span>
+    keywords = <span style="font-style:italic">&#34;blog,developer,personal&#34;</span>
+    avatarurl = <span style="font-style:italic">&#34;images/avatar.jpg&#34;</span>
+    footercontent = <span style="font-style:italic">&#34;Hosted for free by GitHub :*&#34;</span>
+    hidecredits = <span style="font-weight:bold">false</span>
+    hidecopyright = <span style="font-weight:bold">false</span>
+    rtl = <span style="font-weight:bold">false</span>
+[taxonomies]
+    category = <span style="font-style:italic">&#34;categories&#34;</span>
+    series = <span style="font-style:italic">&#34;series&#34;</span>
+    tag = <span style="font-style:italic">&#34;tags&#34;</span>
+<span style="font-style:italic"># Social links</span>
+[[params.social]]
+    name = <span style="font-style:italic">&#34;Github&#34;</span>
+    icon = <span style="font-style:italic">&#34;fab fa-github fa-2x&#34;</span>
+    weight = 1
+    url = <span style="font-style:italic">&#34;https://github.com/3sky/&#34;</span>
+[[params.social]]
+    name = <span style="font-style:italic">&#34;LinkedIN&#34;</span>
+    icon = <span style="font-style:italic">&#34;fab fa-linkedin&#34;</span>
+    weight = 2
+    url = <span style="font-style:italic">&#34;https://www.linkedin.com/in/jakubwolynko/&#34;</span>
+[[params.social]]
+    name = <span style="font-style:italic">&#34;Twitter&#34;</span>
+    icon = <span style="font-style:italic">&#34;fab fa-twitter fa-2x&#34;</span>
+    weight = 3
+    url = <span style="font-style:italic">&#34;https://twitter.com/kuba_wolynko/&#34;</span>
+<span style="font-style:italic"># Menu links</span>
+[[menu.main]]
+    name = <span style="font-style:italic">&#34;Blog&#34;</span>
+    weight = 1
+    url  = <span style="font-style:italic">&#34;/posts/&#34;</span>
+[[menu.main]]
+    name = <span style="font-style:italic">&#34;About&#34;</span>
+    weight = 2
+    url = <span style="font-style:italic">&#34;/about/&#34;</span>
+</code></pre></div></li>
+</ol>
+</li>
+<li>
+<p>Add first post</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new posts/hello-world.md
+</code></pre></div></li>
+<li>
+<p>Customize it !</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim content/posts/hello-world.md
+</code></pre></div></li>
+<li>
+<p>Add <code>about</code> section</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new about.md
+</code></pre></div></li>
+<li>
+<p>Customize it !</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim content/about.md
+</code></pre></div></li>
+<li>
+<p>Add avatar</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir static/images
+wget https://pbs.twimg.com/profile_images/1219265057265266688/ANJwVv2o_400x400.jpg -Ostatic/images/avatar.jpg
+<span style="font-style:italic"># that&#39;s my photo from Twitter</span>
+</code></pre></div></li>
+<li>
+<p>Uff now you&rsquo;re ready - generate your static site.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo
+</code></pre></div></li>
+</ol>
+<h4 id="summary-1">Summary</h4>
+<p>Now you have folder <code>public</code> with static content of your page. What&rsquo;s next? Upload to GitHub? No, that will be to fast and to easy. We need real tests. Let&rsquo;s say hello to nginx.</p>
+<h2 id="nginx">Nginx</h2>
+<p><a href="https://www.nginx.com/">Nginx</a> (pronounced &ldquo;engine X&rdquo;) is a web server which can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache. The software was created by Igor Sysoev and first publicly released in 2004.</p>
+<h3 id="why-2">Why?</h3>
+<p>Nginx is open-source, popular and fast. Another obvious choice.</p>
+<h4 id="lets-code-2">Let&rsquo;s code</h4>
+<ol>
+<li>
+<p>Copy <code>public/</code> into <code>/var/www/</code></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo cp -R public /var/www/
+
+<span style="font-style:italic"># -R = copy directories recursively</span>
+</code></pre></div></li>
+<li>
+<p>Change owner of file</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo chown -R <span style="font-weight:bold">$(</span>ps aux|grep nginx|grep -v grep| grep -v master| cut -d<span style="font-style:italic">&#34; &#34;</span> -f1<span style="font-weight:bold">)</span>. /var/www/public/
+
+<span style="font-style:italic"># -R = copy directories recursively</span>
+<span style="font-style:italic"># $(ps aux|grep nginx|grep -v grep| grep -v master| cut -d&#34; &#34; -f1). = get owner of nginx worker</span>
+    <span style="font-style:italic"># $(). = get output as a command argument, `.` = set same group as owner</span>
+
+<span style="font-style:italic"># ps aux|grep nginx|grep -v grep| grep -v master| cut -d&#34; &#34; -f1</span>
+    <span style="font-style:italic"># a = show processes for all users</span>
+    <span style="font-style:italic"># u = display the process&#39;s user/owner</span>
+    <span style="font-style:italic"># x = also show processes not attached to a terminal</span>
+
+<span style="font-style:italic"># grep nginx|grep -v grep| grep -v master = filter output</span>
+    <span style="font-style:italic"># search `nginx` string</span>
+    <span style="font-style:italic"># -v = invert the sense of matching, to select non-matching lines</span>
+
+<span style="font-style:italic"># cut -d&#34; &#34; -f1 = get only first column od output</span>
+    <span style="font-style:italic"># -d&#34; &#34; = use &#34; &#34; instead of TAB for field delimiter</span>
+    <span style="font-style:italic"># -f1 = select only these fields(1)</span>
+</code></pre></div></li>
+<li>
+<p>Change default config file</p>
+<ol>
+<li>Open file</li>
+</ol>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/nginx/sites-enabled/default
+</code></pre></div><ol>
+<li>
+<p>Change root directory</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="font-style:italic">#line 41</span>
+root /var/www/html;
+<span style="font-style:italic"># into</span>
+root /var/www/public;
+</code></pre></div></li>
+</ol>
+</li>
+<li>
+<p>Restart server</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo systemctl restart nginx.service
+</code></pre></div></li>
+<li>
+<p>Check page status(should be <code>200 - OK</code>)</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -sL -w <span style="font-style:italic">&#34;%{http_code}\\n&#34;</span> localhost:80 -o /dev/null
+<span style="font-style:italic"># -s = Silent cURL&#39;s output</span>
+<span style="font-style:italic"># -L = Follow redirects</span>
+<span style="font-style:italic"># -w = Custom output format</span>
+<span style="font-style:italic"># -o = Redirects the HTML output to /dev/null</span>
+</code></pre></div></li>
+<li>
+<p>Destroy the Terraform-managed infrastructure</p>
+<p><code>WARNING</code> - At the end of learnig session destroy unused infrastructure - it&rsquo;s cheaper</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">terraform destroy
+</code></pre></div></li>
+</ol>
+<h4 id="summary-2">Summary</h4>
+<p>Now we have working static site on GCP instance, with usage of Terraform and Nginx. That&rsquo;s only beginning, another step will be deploy this site just inside GitHub Pages.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in GitHub Pages</h3>
+      <nav>
+        <ul>
+        
+        
+          
+            <li>
+              <a href="/posts/how-to-gp-2/">How to use GitHub Pages #2</a>
+            </li>
+          
+        
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>Hosted for free by GitHub :*</p>
+    
+    
+      
+        © 2020
+      
+       Jakub Wołynko 
+    
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+    
+
+  </body>
+
+</html>

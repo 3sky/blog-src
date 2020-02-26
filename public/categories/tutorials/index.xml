@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tutorials on Personal blog</title>
+    <link>/categories/tutorials/</link>
+    <description>Recent content in tutorials on Personal blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 26 Feb 2020 22:55:46 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/tutorials/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to use GitHub Pages #2</title>
+      <link>/posts/how-to-gp-2/</link>
+      <pubDate>Wed, 26 Feb 2020 22:55:46 +0000</pubDate>
+      
+      <guid>/posts/how-to-gp-2/</guid>
+      <description>In previous episode I have created short blog post about short blog post. That was quite interesting for me, in meantime I configure my VSC for English support add some small fixes in Markdown file then I realized that manual reload of configuration is huge mistake in context of productive. What is the first tool when we start thinking about automation? In Linux environment of course. For me it&amp;rsquo;s Bash. Let&amp;rsquo;s begin then.</description>
+    </item>
+    
+    <item>
+      <title>How to use GitHub Pages #1</title>
+      <link>/posts/how-to-gp-1/</link>
+      <pubDate>Mon, 24 Feb 2020 21:55:02 +0000</pubDate>
+      
+      <guid>/posts/how-to-gp-1/</guid>
+      <description>Everyone sometimes think about personal website. Nothing fancy, just static content with clever topics&amp;hellip; sounds easy isn&amp;rsquo;t it? The only problem is how to host this page and how to do it fast (and as cheap as is possible). So where comes GitHub Page. The main reason why I choose this solution is the price and domain. https://3sky.github.io will look cool, almost professional. The question is why I will do it harder than it&amp;rsquo;s recommended?</description>
+    </item>
+    
+  </channel>
+</rss>
