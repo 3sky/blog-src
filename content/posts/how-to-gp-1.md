@@ -208,7 +208,9 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
             info = "IT Developer"
             description = "Clean and minimal blog about IT"
             keywords = "blog,developer,personal"
-            avatarurl = "images/avatar.jpg"
+            favicon_32 = "images/f32.png"
+            favicon_16 = "images/f16.png"
+	    avatarurl = "images/avatar.jpg"
             footercontent = "Hosted for free by GitHub :*"
             hidecredits = false
             hidecopyright = false
