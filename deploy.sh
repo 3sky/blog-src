@@ -3,16 +3,18 @@ set -e
 # -e = Exit immediately if a command exits with a non-zero status
 
 # Cleanup public directory
-rm -rf public
+rm -rf 3sky/blog-src/public
 
 # get hugo version
 hugo --version
 
 # Generate static
+cd 3sky/blog-src
 hugo
 
 # Clone page repo
-git clone https://github.com/3sky/3sky.github.io
+ls -lR
+git clone https://github.com/3sky/3sky.github.io 
 
 # Copy content
 cp -R public/* 3sky.github.io
