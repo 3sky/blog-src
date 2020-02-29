@@ -2,9 +2,9 @@
 draft = false
 date = 2020-02-29T23:00:02Z
 title = "How deliver blog page"
-description = "GitHub page with style"
+description = "Deliver with style"
 slug = ""
-tags = ["travis ci", "circle ci"]
+tags = ["Travis ci", "Circle ci"]
 categories = ["tutorials", "cd"]
 externalLink = ""
 series = ["GitHub Pages"]
@@ -36,7 +36,7 @@ As a continuous integration platform, [Travis CI][1] supports your development p
 
 ### Why?
 
-Travis CI is another popular tool which is free for open source projects. Widely used by many companies like [zendesk][3] or [heroku][4]. If I remember correctly is quite easy, but only "war never changes"...
+Travis CI is another popular tool which is free for open source projects. Widely used by many companies like [Zendesk][3] or [Heroku][4]. If I remember correctly is quite easy, but only "war never changes"...
 
 #### Let's code
 
@@ -100,7 +100,7 @@ Travis CI is another popular tool which is free for open source projects. Widely
 
 #### Summary
 
-It's take me several attempts to configure whole process, maybe because it's not regular build pipeline. After that I need to figure out how looks file structure, but here very helpful was debug method called `pwd && ls -l`. Configuration GitHub credentials, repo paths, etc was easy and fast. Installing `hugo` from snap repository was also hassle-free. For my case this solution is more than OK. Everything just works, I can reuse almost re-use my script, and documentation is neat. 
+It's take me several attempts to configure whole process, maybe because it's not regular build pipeline. After that I need to figure out how looks file structure, but here very helpful was debug method called `pwd && ls -l`. Configuration GitHub credentials, repo paths, etc was easy and fast. Installing `hugo` from snap repository was also hassle-free. For my case this solution is more than OK. Everything just works, I can reuse almost re-use my script, and documentation is neat.
 
 [1]: https://travis-ci.org/
 [2]: https://en.wikipedia.org/wiki/Continuous_delivery

@@ -286,7 +286,7 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
 
 #### Summary
 
-Now you have folder `public` with static content of your page. What's next? Upload to GitHub? No, that will be to fast and to easy. We need real tests. Let's say hello to nginx.
+Now you have folder `public` with static content of your page. What's next? Upload to GitHub? No, that will be to fast and to easy. We need real tests. Let's say hello to Nginx.
 
 ## Nginx
 
