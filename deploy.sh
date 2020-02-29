@@ -6,7 +6,7 @@ set -e
 rm -rf 3sky/blog-src/public
 
 # get hugo version
-hugo --version
+hugo version
 
 # Generate static
 cd 3sky/blog-src
