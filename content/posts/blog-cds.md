@@ -1,6 +1,6 @@
 +++
 draft = false
-date = 2020-02-29T21:55:02Z
+date = 2020-02-29T23:00:02Z
 title = "How deliver blog page"
 description = "GitHub page with style"
 slug = ""
