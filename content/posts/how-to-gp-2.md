@@ -4,7 +4,7 @@ date = 2020-02-26T22:55:46Z
 title = "How to use GitHub Pages #2"
 description = "GitHub page at the hard way"
 slug = ""
-tags = []
+tags = ["GCP", "Terraform", "Hugo", "Nginx"]
 categories = ["tutorials"]
 externalLink = ""
 series = ["GitHub Pages"]
@@ -12,7 +12,7 @@ series = ["GitHub Pages"]
 
 In previous episode I have created short blog post about `short blog post`. That was quite interesting for me, in meantime I configure my VSC for English support add some small fixes in Markdown file then I realized that manual reload of configuration is huge mistake in context of productive. What is the first tool when we start thinking about automation? In Linux environment of course. For me it's `Bash`. Let's begin then.
 
-## Used tools for part #2
+## Tools used in this episode
 
 - Bash
 - GitHub Pages
