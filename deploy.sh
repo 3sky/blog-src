@@ -9,7 +9,8 @@ rm -rf 3sky/blog-src/public
 hugo version
 
 # Generate static
-cd 3sky/blog-src
+ls -lR
+cd blog-src
 hugo
 
 # Clone page repo
