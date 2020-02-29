@@ -1,5 +1,5 @@
 +++
-draft = false
+draft = true
 date = 2020-02-29T22:19:54Z
 title = "How deliver blog page"
 description = "Deliver with style"
@@ -42,7 +42,7 @@ Travis CI is another popular tool which is free for open source projects. Widely
 
 1. Login into webpage https://travis-ci.org/.
 1. Add new project by clicking `+` and select correct [repo][5].
-![alt text](/images/blog-cds-travis-add.png "Add new project")
+<img align="left" width="100" height="100" src="/images/blog-cds-travis-add.png">
 1. Add small `.travis.yml` file:
 
     ```yaml
