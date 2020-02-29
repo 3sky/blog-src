@@ -2,9 +2,9 @@ dist: xenial
 addons:
   snaps:
     - hugo
-    
+
 deploy:
     provider: script
     script: bash deploy.sh
     on:
-  branch: master
+branch: master
