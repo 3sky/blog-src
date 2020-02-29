@@ -9,3 +9,6 @@ deploy:
     script: bash deploy.sh
     on:
 branch: master
+
+notifications:
+  email: false

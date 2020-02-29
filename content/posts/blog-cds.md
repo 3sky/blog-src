@@ -1,6 +1,6 @@
 +++
 draft = false
-date = 2020-02-29T23:00:02Z
+date = 2020-02-29T22:19:54Z
 title = "How deliver blog page"
 description = "Deliver with style"
 slug = ""
@@ -24,7 +24,7 @@ Ahh I forgot one important thing what this whole CD is: \
 1. Build static content
 1. Push into [Page][6] repo
 
-## Used tools in this episode
+## Tools used in this episode
 
 - Travis CI
 - Circle CI
