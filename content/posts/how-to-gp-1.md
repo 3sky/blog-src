@@ -12,7 +12,7 @@ series = ["GitHub Pages"]
 
 Everyone sometimes think about personal website. Nothing fancy, just static content with clever topics... sounds easy isn't it? The only problem is how to host this page and how to do it fast (and as cheap as is possible). So where comes [GitHub Page][1]. The main reason why I choose this solution is the price and domain. https://3sky.github.io will look cool, almost professional. The question is why I will do it harder than it's recommended? Answer is simple, because I can. Technology is all about curiosity and people whose like do stuffs. After short introduction let's start.
 
-## Used tools for part #1
+## Tools used in this episode
 
 - Google Cloud Platform
 - Terraform
