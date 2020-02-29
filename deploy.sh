@@ -5,9 +5,6 @@ set -e
 # Cleanup public directory
 rm -rf public
 
-# install hugo
-sudo snap install hugo
-
 # get hugo version
 hugo --version
 
