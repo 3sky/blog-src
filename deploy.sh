@@ -18,7 +18,14 @@ ls -l 3sky.github.io
 # Copy content
 cp -R public/* 3sky.github.io
 
-ls -lR 3sky.github.io
 # Push to repo
-# cd 3sky.github.io
-# git push
+cd 3sky.github.io
+
+git config --global user.email "3sky@protonmail.com"
+git config --global user.name "#sky"
+
+git add -A
+git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
+
+git remote set-url origin https://3sky:${GH_TOKEN}@github.com/3sky/3sky.github.io.git
+git push --quiet --set-upstream origin master
