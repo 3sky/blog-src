@@ -101,11 +101,11 @@ Travis CI is another popular tool which is free for open source projects. Widely
 
 #### Summary
 
-It's take me several attempts to configure whole process, maybe because it's not regular build pipeline. After that I need to figure out how looks file structure, but here very helpful was debug method called `pwd && ls -l`. Configuration GitHub credentials, repo paths, etc was easy and fast. Installing `hugo` from snap repository was also hassle-free. For my case this solution is more than OK. Everything just works, I can reuse almost re-use my script, and documentation is neat.
+It's take me several attempts to configure whole process, maybe because it's not regular build pipeline. After that I need to figure out how looks file structure, but here very helpful was debug method called `pwd && ls -l`. Configuration GitHub credentials, repo paths, etc was easy and fast. Installing `hugo` from snap repository was also hassle-free. For my case this solution is more than OK. Everything just works, I can re-use almost whole my script and documentation is neat.
 
 ## CircleCi
 
-Rather small description of product on official website. `We build CI/CD so you can build the next big thing.` - circleci.com. I like this slogan it's really neat, if you are managers.
+Rather small description of product on official website. `We build CI/CD so you can build the next big thing.` - circleci.com. I like this slogan it's really trendy, if you are managers.
 
 ### Why?
 
@@ -148,7 +148,7 @@ Rather small description of product on official website. `We build CI/CD so you 
                 sh ./deploy.sh
     ```
 
-1. And of curse do not forger about Environment Variable called `GH_TOKEN`.
+1. And of course do not forget about Environment Variable called `GH_TOKEN`.
 1. As you may see I decided to re-use once again my `deploy.sh` script.
 1. Push your code to repository and watch what is going on.
 
@@ -162,7 +162,7 @@ Rather small description of product on official website. `We build CI/CD so you 
 
 #### Summary
 
-Worth to notice is fact that `CircleCi` is using custom dockers images as a build base. When you realized it world will be better place to live. Why it's fantastic? You can create your own container image and just use it. It's faster especially If you use some massive custom stuff. From another hand, configuration is much more complicated - `job`, `workflows`, `pipeline`, basic dockers understanding. Personally I hate this Web GUI. Slow, unintuitive, design reminds me some time tracking copo tools.
+Worth to notice is fact that `CircleCi` is using custom dockers images as a build base. When you realized it world will be better place to live. Why it's fantastic? You can create your own container image and just use it. It's faster especially If you use some massive custom stuff. From another hand, configuration is much more complicated - `job`, `workflows`, `pipeline`, basic dockers understanding. Personally I hate this Web GUI. Slow, unintuitive, design reminds me some time tracking corpo tools.
 
 ## GitHub Actions
 
@@ -176,8 +176,8 @@ GitHub Actions makes it easy to automate all your software workflows, now with w
 
 1. Click `Action` button in [blog-src][5] page.
 1. Then `Skip this: Set up a workflow yourself`, because real men do not read documentation :)
-1. That's joke. Creator is easier to use, than exploring all this template.
-1. I need add one file `.github/workflow/main.yaml`
+1. That's joke. Creator is easier to use than exploring all this template.
+1. I need to add one file `.github/workflow/main.yaml`
 
     ```yaml
     name: CI
@@ -213,14 +213,15 @@ GitHub Actions makes it easy to automate all your software workflows, now with w
 
 #### Summary
 
-To be honest GitHub Action really surprised me. It's surprisingly easy to setup, even than Travis. Jobs lunch fast, without delays. What I can say more? I have problem with find some issue related to this solution at this point of my CI/CD adventure.
+To be honest GitHub Action really surprised me. It's surprisingly easy to setup, even with compare to Travis. Jobs lunch fast, without delays. What I can say more? I have problem with find some issue related to this solution at this point of my side project maturity.
 
 ## Global summary
 
 This comparison will be focused on my current case not about all good, bad and ugly side of this projects. I would like to highlight that all tested solution are great, easy to setup and free for public projects. Developers provide solid documentation, `stackoverflow` wasn't mandatory. All solution are stable and `Getting Things Done`. \
-At the beginning I would like rejected `CircleCI`, because of this Web GUI. Maybe if you're manager or you just like clicking then is product for you, for me is uncomfortable and hard to read. CircleCI from my feeling is a bit slower than others. Level of complication is high, even with simple projects. Maybe if you have a big complicated project it's awesome, but for me is overkill.
+At the beginning I would like rejected `CircleCI`, because of this Web GUI. Maybe if you're manager or you just like clicking then is product for you, for me is uncomfortable and hard to read. CircleCI from my feeling is a bit slower than others. Level of complication is high, even with simple projects. Maybe if you have a big complicated project it's awesome, but for me is overkill. \
 Here I have problem, both tools really good fit to my case. Web GUI's are simple and effective, yaml file are simple and user friendly. I think GitHub Action are faster than competitors for obvious reason - repo is hosted on GitHub so within one product. Travis has longer history, so should me mature and well tested. \
-After few minutes of thinking I decided to stay with GitHub Action for a few month longer than I expected. Just because doesn't need additional tool and was big surprise for me.
+After few minutes of thinking I decided to stay with GitHub Action for a few month longer than I expected. Just because doesn't need additional tool and looks promising. \
+What next? `Automatic Tests`. Definitely, but I have no idea how to test Markdown and static content.
 
 [1]: https://travis-ci.org/
 [2]: https://en.wikipedia.org/wiki/Continuous_delivery
