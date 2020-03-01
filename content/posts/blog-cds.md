@@ -202,7 +202,7 @@ GitHub Actions makes it easy to automate all your software workflows, now with w
           run: sh ./deploy.sh
     ```
 
-1. Also I set GH_TOKEN as a repository `SECRET`.
+1. Also I set `GH_TOKEN` as a repository `SECRET`.
 1. Now I need only push my code.
 
     ```bash
