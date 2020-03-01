@@ -27,7 +27,7 @@ Ahh I forgot one important thing what this whole CD is: \
 ## Tools used in this episode
 
 - Travis CI
-- Circle CI
+- CircleCI
 - GitHub Action(zero knowledge)
 
 ## Travis CI
@@ -40,9 +40,10 @@ Travis CI is another popular tool which is free for open source projects. Widely
 
 #### Let's code
 
-1. Login into webpage https://travis-ci.org/.
+1. Login into webpage https://travis-ci.org with GitHub account.
 1. Add new project by clicking `+` and select correct [repo][5].
-<img align="left" width="100" height="100" src="/images/blog-cds-travis-add.png">
+![travis-add](/images/blog-cds-travis-add.png)
+
 1. Add small `.travis.yml` file:
 
     ```yaml
@@ -102,6 +103,40 @@ Travis CI is another popular tool which is free for open source projects. Widely
 
 It's take me several attempts to configure whole process, maybe because it's not regular build pipeline. After that I need to figure out how looks file structure, but here very helpful was debug method called `pwd && ls -l`. Configuration GitHub credentials, repo paths, etc was easy and fast. Installing `hugo` from snap repository was also hassle-free. For my case this solution is more than OK. Everything just works, I can reuse almost re-use my script, and documentation is neat.
 
+
+## CircleCi
+
+Rather small description of product on official website. `We build CI/CD so you can build the next big thing.` - circleci.com. I like this slogan it's really neat, if you are managers.
+
+### Why?
+
+[CircleCi][8] is more focused on large companies. Used by Facebook, Spotify, etc. UI is nice and elegant like enterprise solution for managers and product owners. However is also free for open source usage and I have worked with this solution in past.
+
+#### Let's code
+
+1. Login into https://circleci.com with usage of GitHub account as well.
+1. Adding project it's easy, after that you get a information about suggested CircleCI configuration. That's example "Hello World" 
+
+    ```yaml
+    # Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
+    version: 2.1
+    # Use a package of configuration called an orb.
+    orbs:
+    # Declare a dependency on the welcome-orb
+    welcome: circleci/welcome-orb@0.4.1
+    # Orchestrate or schedule a set of jobs
+    workflows:
+    # Name the workflow "welcome"
+    welcome:
+        # Run the welcome/run job in its own container
+        jobs:
+        - welcome/run
+    ```
+
+#### Summary
+
+It's take me several attempts to configure whole process, maybe because it's not regular build pipeline. After that I need to figure out how looks file structure, but here very helpful was debug method called `pwd && ls -l`. Configuration GitHub credentials, repo paths, etc was easy and fast. Installing `hugo` from snap repository was also hassle-free. For my case this solution is more than OK. Everything just works, I can reuse almost re-use my script, and documentation is neat.
+
 [1]: https://travis-ci.org/
 [2]: https://en.wikipedia.org/wiki/Continuous_delivery
 [3]: https://www.zendesk.com/
@@ -109,3 +144,4 @@ It's take me several attempts to configure whole process, maybe because it's not
 [5]: https://github.com/3sky/blog-src
 [6]: https://github.com/3sky/3sky.github.io
 [7]: https://docs.travis-ci.com/user/environment-variables/#defining-variables-in-repository-settings
+[8]: https://circleci.com/
