@@ -1,13 +1,11 @@
-version: 2
+version: 2.1
 jobs:
   build:
-    docker:
-      - image: felicianotech/docker-hugo:0.50
+    docker: 
+      - image: ubuntu:16.04 # the primary container, where your job's commands are run
     steps:
-      - checkout
+      - checkout # check out the code in the project directory
       - run:
-          name: "Run Hugo"
-          command: hugo
-      - run:
-          name: "Deploy Hugo"
-          command: bash deploy.sh       
+          name: run deploy.sh
+          command: |
+            sh ./deploy.sh
