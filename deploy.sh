@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 # -e = Exit immediately if a command exits with a non-zero status
-
+TIMESTAMP=$(date +%s)
 # get hugo version
 hugo version
 
@@ -25,7 +25,7 @@ git config --global user.email "3sky@protonmail.com"
 git config --global user.name "3sky"
 
 git add -A
-git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
+git commit --message "CI Build: $TIMESTAMP"
 
 git remote set-url origin https://3sky:${GH_TOKEN}@github.com/3sky/3sky.github.io.git >/dev/null 2>&1
 git push --quiet --set-upstream origin master

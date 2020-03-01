@@ -28,7 +28,7 @@ Ahh I forgot one important thing what this whole CD is: \
 
 - Travis CI
 - CircleCI
-- GitHub Action(zero knowledge)
+- GitHub Action
 
 ## Travis CI
 
@@ -65,7 +65,7 @@ Travis CI is another popular tool which is free for open source projects. Widely
     #!/bin/bash
     set -e
     # -e = Exit immediately if a command exits with a non-zero status
-
+    TIMESTAMP=$(date +%s)
     # get hugo version
     hugo version
 
@@ -76,7 +76,7 @@ Travis CI is another popular tool which is free for open source projects. Widely
     hugo
 
     # Clone page repo
-    git clone https://github.com/3sky/3sky.github.io
+    git clone https://github.com/3sky/3sky.github.io 
 
     # Copy content
     cp -R public/* 3sky.github.io
@@ -89,7 +89,7 @@ Travis CI is another popular tool which is free for open source projects. Widely
     git config --global user.name "3sky"
 
     git add -A
-    git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
+    git commit --message "CI Build: $TIMESTAMP"
 
     git remote set-url origin https://3sky:${GH_TOKEN}@github.com/3sky/3sky.github.io.git >/dev/null 2>&1
     git push --quiet --set-upstream origin master
@@ -103,7 +103,6 @@ Travis CI is another popular tool which is free for open source projects. Widely
 
 It's take me several attempts to configure whole process, maybe because it's not regular build pipeline. After that I need to figure out how looks file structure, but here very helpful was debug method called `pwd && ls -l`. Configuration GitHub credentials, repo paths, etc was easy and fast. Installing `hugo` from snap repository was also hassle-free. For my case this solution is more than OK. Everything just works, I can reuse almost re-use my script, and documentation is neat.
 
-
 ## CircleCi
 
 Rather small description of product on official website. `We build CI/CD so you can build the next big thing.` - circleci.com. I like this slogan it's really neat, if you are managers.
@@ -115,7 +114,7 @@ Rather small description of product on official website. `We build CI/CD so you 
 #### Let's code
 
 1. Login into https://circleci.com with usage of GitHub account as well.
-1. Adding project it's easy, after that you get a information about suggested CircleCI configuration. That's example "Hello World" 
+1. Adding project it's easy, after that you get a information about suggested CircleCI configuration. That's example "Hello World"
 
     ```yaml
     # Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
@@ -133,9 +132,84 @@ Rather small description of product on official website. `We build CI/CD so you 
         - welcome/run
     ```
 
+1. Unfortunately I want add my custom solution. So I added my own `.circleci/config.yml` in root of repository.
+
+    ```yaml
+    version: 2.1
+    jobs:
+    build:
+        docker:
+        - image: jguyomard/hugo-builder # the primary container, where your job's commands are run
+        steps:
+        - checkout # check out the code in the project directory
+        - run:
+            name: run deploy.sh
+            command: |
+                sh ./deploy.sh
+    ```
+
+1. And of curse do not forger about Environment Variable called `GH_TOKEN`.
+1. As you may see I decided to re-use once again my `deploy.sh` script.
+1. Push your code to repository and watch what is going on.
+
+    ```bash
+    git add -A && git commit -m 'circleci test #1' & git push
+
+    # Useful tip use #<incrising number>, that save you from commits message like `fixxxxx`
+    ```
+
+1. Great success, I just setup two CI system to my small blog page.
+
 #### Summary
 
-It's take me several attempts to configure whole process, maybe because it's not regular build pipeline. After that I need to figure out how looks file structure, but here very helpful was debug method called `pwd && ls -l`. Configuration GitHub credentials, repo paths, etc was easy and fast. Installing `hugo` from snap repository was also hassle-free. For my case this solution is more than OK. Everything just works, I can reuse almost re-use my script, and documentation is neat.
+Worth to notice is fact that `CircleCi` is using custom dockers images as a build base. When you realized it world will be better place to live. Why it's fantastic? You can create your own container image and just use it. It's faster especially If you use some massive custom stuff. From another hand, configuration is much more complicated - `job`, `workflows`, `pipeline`, basic dockers understanding. Personally I hate this Web GUI. Slow, unintuitive, design reminds me some time tracking copo tools.
+
+## GitHub Actions
+
+GitHub Actions makes it easy to automate all your software workflows, now with world-class CI/CD. Build, test, and deploy your code right from GitHub. Make code reviews, branch management, and issue triaging work the way you want.
+
+### Why?
+
+[GitHub Actions][9] is quite new product especially for public repo. First [blog post][10] I found is from `2019-08-08`. I never use it before, so that could be quite interesting adventure. Happily where is a lot of example in Internet, what could go wrong then?
+
+#### Let's code
+
+1. Click `Action` button in [blog-src][5] page.
+1. Then `Skip this: Set up a workflow yourself`, because real men do not read documentation :)
+1. That's joke. Creator is easier to use, than exploring all this template.
+1. I need add one file `.github/workflow/main.yaml`
+
+    ```yaml
+    name: CI
+
+    on: [push]
+
+    jobs:
+    build:
+
+        runs-on: ubuntu-latest
+
+        steps:
+        - uses: actions/checkout@v2
+        - name: Run a one-line script
+          run: echo Hello, world!
+        - name: Install Hugo
+          run: sudo snap install hugo
+        - name: Run deploy.sh
+          env:
+            # Here we need to declar secret directly for a first time
+            GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          run: sh ./deploy.sh
+    ```
+
+1. Also I set GH_TOKEN as a repository `SECRET`.
+1. Now I need only push my code.
+
+    ```bash
+    git add -A && git commit -m 'GitHub test #1' & git push
+    ```
+
+1. After that I go to action tab a see how my build look like.
 
 [1]: https://travis-ci.org/
 [2]: https://en.wikipedia.org/wiki/Continuous_delivery
@@ -144,4 +218,6 @@ It's take me several attempts to configure whole process, maybe because it's not
 [5]: https://github.com/3sky/blog-src
 [6]: https://github.com/3sky/3sky.github.io
 [7]: https://docs.travis-ci.com/user/environment-variables/#defining-variables-in-repository-settings
-[8]: https://circleci.com/
+[8]: https://circleci.com
+[9]: https://github.com/features/actions
+[10]: https://github.blog/2019-08-08-github-actions-now-supports-ci-cd/
