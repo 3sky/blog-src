@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker: 
-      - image: ubuntu:16.04 # the primary container, where your job's commands are run
+      - image: jguyomard/hugo-builder # the primary container, where your job's commands are run
     steps:
       - checkout # check out the code in the project directory
       - run:
