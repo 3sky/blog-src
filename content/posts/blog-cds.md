@@ -1,6 +1,6 @@
 +++
-draft = true
-date = 2020-02-29T22:19:54Z
+draft = false
+date = 2020-03-01T22:19:54Z
 title = "How deliver blog page"
 description = "Deliver with style"
 slug = ""
@@ -210,6 +210,17 @@ GitHub Actions makes it easy to automate all your software workflows, now with w
     ```
 
 1. After that I go to action tab a see how my build look like.
+
+#### Summary
+
+To be honest GitHub Action really surprised me. It's surprisingly easy to setup, even than Travis. Jobs lunch fast, without delays. What I can say more? I have problem with find some issue related to this solution at this point of my CI/CD adventure.
+
+## Global summary
+
+This comparison will be focused on my current case not about all good, bad and ugly side of this projects. I would like to highlight that all tested solution are great, easy to setup and free for public projects. Developers provide solid documentation, `stackoverflow` wasn't mandatory. All solution are stable and `Getting Things Done`. \
+At the beginning I would like rejected `CircleCI`, because of this Web GUI. Maybe if you're manager or you just like clicking then is product for you, for me is uncomfortable and hard to read. CircleCI from my feeling is a bit slower than others. Level of complication is high, even with simple projects. Maybe if you have a big complicated project it's awesome, but for me is overkill.
+Here I have problem, both tools really good fit to my case. Web GUI's are simple and effective, yaml file are simple and user friendly. I think GitHub Action are faster than competitors for obvious reason - repo is hosted on GitHub so within one product. Travis has longer history, so should me mature and well tested. \
+After few minutes of thinking I decided to stay with GitHub Action for a few month longer than I expected. Just because doesn't need additional tool and was big surprise for me.
 
 [1]: https://travis-ci.org/
 [2]: https://en.wikipedia.org/wiki/Continuous_delivery
