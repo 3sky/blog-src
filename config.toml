@@ -8,6 +8,9 @@ pygmentsstyle = "bw"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
+googleAnalytics = "UA-159451243-1"
+disqusShortname = "3sky"
+
 [params]
     author = "Jakub Wołynko"
     info = "IT Developer"
@@ -20,8 +23,6 @@ pygmentscodefencesguesssyntax = true
     hidecredits = false
     hidecopyright = false
     rtl = false
-    googleAnalytics = "UA-159451243-1"
-    disqusShortname = "3sky"
 [taxonomies]
     category = "categories"
     series = "series"
