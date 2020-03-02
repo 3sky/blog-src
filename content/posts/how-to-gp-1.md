@@ -202,6 +202,8 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
         pygmentsstyle = "bw"
         pygmentscodefences = true
         pygmentscodefencesguesssyntax = true
+        googleAnalytics = "UA-159451243-1" # The personal key for counting users with Google Analytics
+        disqusShortname = "3sky" # Maybe you want to comment somethig with disqus?
 
         [params]
             author = "Jakub Wołynko"
