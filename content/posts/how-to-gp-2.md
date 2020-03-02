@@ -10,7 +10,7 @@ externalLink = ""
 series = ["GitHub Pages"]
 +++
 
-In previous episode I have created short blog post about `short blog post`. That was quite interesting for me, in meantime I configure my VSC for English support add some small fixes in Markdown file then I realized that manual reload of configuration is huge mistake in context of productive. What is the first tool when we start thinking about automation? In Linux environment of course. For me it's `Bash`. Let's begin then.
+In the previous episode, I have created a short blog post about `short blog post`. That was quite interesting for me, in meantime, I configure my VSC for English support, add some small fixes in the Markdown file then I realized that the manual reload of configuration is a huge mistake in the context of productive. What is the first tool when we start thinking about automation? In Linux environment of course. For me, it's `Bash`. Let's begin then.
 
 ## Tools used in this episode
 
@@ -27,7 +27,7 @@ Bash is everywhere, on almost every modern *nix system. Maybe it's not most read
 
 #### Let's code
 
-1. Go inside `3sky.io` and open new file
+1. Go inside `3sky.io` and open a new file
 
     ```bash
     cd <page-name>
@@ -66,7 +66,7 @@ Bash is everywhere, on almost every modern *nix system. Maybe it's not most read
     sudo systemctl restart nginx.service
     ```
 
-    It's very similar to steps from previous post isn't it ? 
+    It's very similar to steps from the previous post, isn't it? 
 
 1. Add execution permission
 
@@ -85,15 +85,15 @@ Bash is everywhere, on almost every modern *nix system. Maybe it's not most read
 
 #### Summary
 
-After that small intervention I cat reload my developer service after every update without any problems or manual work. What is important bash script works and is stable. Not everything is as pleasant as not repeating boring work. Now it's time for go-live.
+After that small intervention, I cat reload my developer service after every update without any problems or manual work. The important fact is that the bash script works and is stable. Not everything is as pleasant as not repeating boring work. Now it's time for go-live.
 
 ## GitHub Pages
 
-[GitHub Pages][2] is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website. You can see examples of GitHub Pages sites in the GitHub Pages examples collection.
+[GitHub Pages][2] is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process and publishes a website. You can see examples of GitHub Pages sites in the GitHub Pages examples collection.
 
 ### Why?
 
-We already talk about that, it's free and till writing this series I didn't hear any complaints. Also I have a simple [documentation][3]. So why not? 
+We already talk about that, it's free and till writing this series I didn't hear any complaints. Also, I have a simple [documentation][3]. So why not? 
 
 #### Let's code
 
@@ -152,8 +152,8 @@ We already talk about that, it's free and till writing this series I didn't hear
         git push
         ```
 
-    1. Now provide some credentials I can reccomend tokens for machines like GCP.
-        1. Use this [guid][4] - it's better to use orginal docs.
+    1. Now provide some credentials I can recommend tokens for machines like GCP.
+        1. Use this [guid][4] - it's better to use original docs.
         1. Type you're user and token.
 
             ```bash
@@ -166,7 +166,7 @@ We already talk about that, it's free and till writing this series I didn't hear
 
 #### Summary
 
-It's working very slow. My first deploy lasted more than 1hour, so take a breath and just go for a walk, I can recommend long walk. What will be next? CD system, but which one? And what about automatic test? You can ask now `why the heck I need automatic tests?`. Because if something take so long, it's better to deploy stable and tested version.  
+It's working very slow. My first deployment lasted more than 1hour, so take a breath and just go for a walk, I can recommend a long walk. What will be next? CD system, but which one? And what about automatic test? You can ask now `why the heck I need automatic tests?`. Because if something takes so long, it's better to deploy a stable and tested version.  
 
 [1]: https://www.gnu.org/software/bash/
 [2]: https://help.github.com/en/github/working-with-github-pages/about-github-pages

@@ -10,7 +10,7 @@ externalLink = ""
 series = ["GitHub Pages"]
 +++
 
-Everyone sometimes think about personal website. Nothing fancy, just static content with clever topics... sounds easy isn't it? The only problem is how to host this page and how to do it fast (and as cheap as is possible). So where comes [GitHub Page][1]. The main reason why I choose this solution is the price and domain. https://3sky.github.io will look cool, almost professional. The question is why I will do it harder than it's recommended? Answer is simple, because I can. Technology is all about curiosity and people whose like do stuffs. After short introduction let's start.
+Everyone sometimes thinks about personal website. Nothing fancy, just static content with clever topics... sounds easy, isn't it? The only problem is how to host this page and how to do it fast (and as cheap as is possible). So where comes [GitHub Page][1]. The main reason why I choose this solution is the price and domain. https://3sky.github.io will look cool, almost professional. The question is why I will do it harder than it's recommended? The answer is simple because I can. Technology is all about curiosity and people who like to do stuff. After a short introduction let's start.
 
 ## Tools used in this episode
 
@@ -25,7 +25,7 @@ Everyone sometimes think about personal website. Nothing fancy, just static cont
 
 ### Why?
 
-It's very popular tool - I always want to learn how to use it. More or less in correct way. Also managing infrastructure as a code it’s so satisfying.
+It's a very popular tool - I always want to learn how to use it. More or less in the correct way. Also managing infrastructure as a code it’s so satisfying.
 
 #### Let's code
 
@@ -115,7 +115,7 @@ It's very popular tool - I always want to learn how to use it. More or less in c
 1. Apply the changes required to reach the desired state of the configuration
 
     ```bash
-    teraform apply
+    terraform apply
     ```
 
 1. Connect to instance via ssh
@@ -139,7 +139,7 @@ It's very popular tool - I always want to learn how to use it. More or less in c
 
 #### Summary
 
-That was easy isn't it? But remember it's infrastructure working on someone's else machines - you need to pay for it. Use Terraform wisely.
+That was easy, isn't it? But remember it's infrastructure working on someone's else machines - you need to pay for it. Use Terraform wisely.
 
 ## Hugo
 
@@ -151,13 +151,13 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
 
 #### Let's code
 
-1. Install Hugo with correct version
+1. Install Hugo with the correct version
 
     ```bash
     sudo snap install hugo
     ```
 
-1. Generate new site
+1. Generate a new site
 
     ```bash
     hugo new site <page-name>
@@ -210,7 +210,7 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
             keywords = "blog,developer,personal"
             favicon_32 = "images/f32.png"
             favicon_16 = "images/f16.png"
-	    avatarurl = "images/avatar.jpg"
+        avatarurl = "images/avatar.jpg"
             footercontent = "Hosted for free by GitHub :*"
             hidecredits = false
             hidecopyright = false
@@ -246,13 +246,13 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
             url = "/about/"
         ```
 
-1. Add first post
+1. Add the first post
 
     ```bash
     hugo new posts/hello-world.md
     ```
 
-1. Customize it !
+1. Customize it!
 
     ```bash
     vim content/posts/hello-world.md
@@ -264,7 +264,7 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
     hugo new about.md
     ```
 
-1. Customize it !
+1. Customize it!
 
     ```bash
     vim content/about.md
@@ -286,11 +286,11 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
 
 #### Summary
 
-Now you have folder `public` with static content of your page. What's next? Upload to GitHub? No, that will be to fast and to easy. We need real tests. Let's say hello to Nginx.
+Now you have folder `public` with static content of your page. What's next? Upload to GitHub? No, that will be too fast and too easy. We need real tests. Let's say hello to Nginx.
 
 ## Nginx
 
-[Nginx][6] (pronounced "engine X") is a web server which can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache. The software was created by Igor Sysoev and first publicly released in 2004.
+[Nginx][6] (pronounced "engine X") is a web server that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache. The software was created by Igor Sysoev and first publicly released in 2004.
 
 ### Why?
 
@@ -306,7 +306,7 @@ Nginx is open-source, popular and fast. Another obvious choice.
     # -R = copy directories recursively
     ```
 
-1. Change owner of file
+1. Change owner of a file
 
     ```bash
     sudo chown -R $(ps aux|grep nginx|grep -v grep| grep -v master| cut -d" " -f1). /var/www/public/
@@ -364,7 +364,7 @@ Nginx is open-source, popular and fast. Another obvious choice.
 
 1. Destroy the Terraform-managed infrastructure
 
-    `WARNING` - At the end of learnig session destroy unused infrastructure - it's cheaper
+    `WARNING` - At the end of learning session destroy unused infrastructure - it's cheaper
 
     ```bash
     terraform destroy
@@ -372,11 +372,5 @@ Nginx is open-source, popular and fast. Another obvious choice.
 
 #### Summary
 
-Now we have working static site on GCP instance, with usage of Terraform and Nginx. That's only beginning, another step will be deploy this site just inside GitHub Pages.
+Now we have a working static site on GCP instance, with the usage of Terraform and Nginx. That's only beginning, another step will be deploying this site just inside GitHub Pages.
 
-[1]: https://pages.github.com/
-[2]: https://themes.gohugo.io/
-[3]: https://www.terraform.io/
-[4]: https://console.cloud.google.com/apis/credentials/serviceaccountkey
-[5]: https://gohugo.io/
-[6]: https://www.nginx.com/
