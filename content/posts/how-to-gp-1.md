@@ -374,3 +374,9 @@ Nginx is open-source, popular and fast. Another obvious choice.
 
 Now we have a working static site on GCP instance, with the usage of Terraform and Nginx. That's only beginning, another step will be deploying this site just inside GitHub Pages.
 
+[1]: https://pages.github.com/
+[2]: https://themes.gohugo.io/
+[3]: https://www.terraform.io/
+[4]: https://console.cloud.google.com/apis/credentials/serviceaccountkey
+[5]: https://gohugo.io/
+[6]: https://www.nginx.com/
