@@ -16,7 +16,7 @@ jobs:
     - name: Install ruby-dev
       run: sudo apt-get install ruby-dev
     - name: Install depedances for mdl
-      run: sudo gem install rake bundler mdl
+      run: sudo gem install rake bundler mdl && sudo gem update --system 3.0.6
     - name: Run tests
       run: mdl content/*
     - name: Run deploy.sh
