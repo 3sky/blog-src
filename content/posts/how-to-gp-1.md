@@ -10,7 +10,18 @@ externalLink = ""
 series = ["GitHub Pages"]
 +++
 
-Everyone sometimes thinks about personal website. Nothing fancy, just static content with clever topics... sounds easy, isn't it? The only problem is how to host this page and how to do it fast (and as cheap as is possible). So where comes [GitHub Page][1]. The main reason why I choose this solution is the price and domain. https://3sky.github.io will look cool, almost professional. The question is why I will do it harder than it's recommended? The answer is simple because I can. Technology is all about curiosity and people who like to do stuff. After a short introduction let's start.
+# Welcome
+
+Everyone sometimes thinks about personal website.
+Nothing fancy, just static content with clever topics...
+sounds easy, isn't it? The only problem is how to host
+this page and how to do it fast (and as cheap as is possible).
+So where comes [GitHub Page][1]. The main reason why I choose
+this solution is the price and domain. 3sky.github.io
+will look cool, almost professional. The question is why I will
+do it harder than it's recommended? The answer is simple because I can.
+Technology is all about curiosity and people who like to do stuff.
+After a short introduction let's start.
 
 ## Tools used in this episode
 
@@ -21,19 +32,31 @@ Everyone sometimes thinks about personal website. Nothing fancy, just static con
 
 ## Terraform
 
-[Terraform ][3] is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.
+[Terraform][3] is a tool for building, changing,
+and versioning infrastructure safely and efficiently.
+Terraform can manage existing and popular service
+providers as well as custom in-house solutions.
 
-### Why?
+### Why Terraform
 
-It's a very popular tool - I always want to learn how to use it. More or less in the correct way. Also managing infrastructure as a code it’s so satisfying.
+It's a very popular tool - I always want to learn how
+to use it. More or less in the correct way.
+Also managing infrastructure as a code it’s so satisfying.
 
-#### Let's code
+### Let's code - Terraform
 
 1. Getting project credentials.
 
-    Set up a service account key, which Terraform will use to create and manage resources in your GCP project. Go to the [create service account key page][4]. Select the default service account or create a new one, select JSON as the key type, and click Create.
-
-    This downloads a JSON file with all the credentials that will be needed for Terraform to manage the resources. This file should be located in a secure place for production projects, but for this example move the downloaded JSON file to the project directory. We will call this file `auth.json`
+    Set up a service account key, which Terraform
+    will use to create and manage resources in your GCP project.
+    Go to the [create service account key page][4]. Select the default
+    service account or create a new one, select JSON as the key type,
+    and click Create.
+    This downloads a JSON file with all the credentials that will be
+    needed for Terraform to manage the resources. This file should be
+    located in a secure place for production projects,
+    but for this example move the downloaded JSON file to the project
+    directory. We will call this file `auth.json`
 
 1. Create `main.tf`
 
@@ -59,23 +82,29 @@ It's a very popular tool - I always want to learn how to use it. More or less in
 
     // A single Google Cloud Engine instance
     resource "google_compute_instance" "default" {
-        count = 1                                         // count of instances
-        name         = "app-${random_id.instance_id.hex}" // define name with random_id plugin
-        machine_type = "f1-micro"                         // size of instance
+        // count of instances
+        count = 1
+        // define name with random_id plugin
+        name         = "app-${random_id.instance_id.hex}"
+        // size of instance
+        machine_type = "f1-micro"
         zone         = local.region_eu
 
     boot_disk {
         initialize_params {
-            image = "ubuntu-1804-bionic-v20200129a" // image from GCP image list
+            // image from GCP image list
+            image = "ubuntu-1804-bionic-v20200129a"
         }
     }
 
     metadata = {
-        ssh-keys = "kuba:${file("~/.ssh/id_rsa.pub")}" // existing ssh key of kuba's
+        // existing ssh key of kuba's
+        ssh-keys = "kuba:${file("~/.ssh/id_rsa.pub")}"
     }
 
     // Make sure nginx is installed on all new instances for later steps
-    metadata_startup_script = "sudo apt-get update; sudo apt-get install -yq nginx; "
+    metadata_startup_script = "sudo apt-get update;
+    sudo apt-get install -yq nginx;"
 
     network_interface {
         network = "default"
@@ -131,25 +160,30 @@ It's a very popular tool - I always want to learn how to use it. More or less in
 
 1. Destroy the Terraform-managed infrastructure
 
-    `WARNING` - At the end of learning session destroy unused infrastructure - it's cheaper
+    `WARNING` - At the end of learning session
+    destroy unused infrastructure - it's cheaper
 
     ```bash
     terraform destroy
     ```
 
-#### Summary
+### Summary - Terraform
 
-That was easy, isn't it? But remember it's infrastructure working on someone's else machines - you need to pay for it. Use Terraform wisely.
+That was easy, isn't it? But remember it's infrastructure
+working on someone's else machines - you need to pay for it.
+Use Terraform wisely.
 
 ## Hugo
 
-[Hugo][5] is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again
+[Hugo][5] is one of the most popular open-source
+static site generators. With its amazing speed and
+flexibility, Hugo makes building websites fun again
 
-### Why?
+### Why Hugo
 
 Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was easy.
 
-#### Let's code
+### Let's code - Hugo
 
 1. Install Hugo with the correct version
 
@@ -184,13 +218,14 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
     ```
 
 1. Configure your `config.toml`
+
     1. Open `config.toml`
 
         ```bash
         vim config.toml
         ```
 
-    2. Setup minimal config
+    1. Setup minimal config
 
         ```toml
         title = "Personal blog"
@@ -202,8 +237,10 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
         pygmentsstyle = "bw"
         pygmentscodefences = true
         pygmentscodefencesguesssyntax = true
-        googleAnalytics = "UA-159451243-1" # The personal key for counting users with Google Analytics
-        disqusShortname = "3sky" # Maybe you want to comment somethig with disqus?
+        # The personal key for counting users with Google Analytics
+        googleAnalytics = "UA-159451243-1"
+        # Maybe you want to comment somethig with disqus?
+        disqusShortname = "3sky"
 
         [params]
             author = "Jakub Wołynko"
@@ -276,8 +313,9 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
 
     ```bash
     mkdir static/images
-    wget https://pbs.twimg.com/profile_images/1219265057265266688/ANJwVv2o_400x400.jpg -Ostatic/images/avatar.jpg
     # that's my photo from Twitter
+    wget -Ostatic/images/avatar.jpg \
+    https://pbs.twimg.com/profile_images/1219265057265266688/ANJwVv2o_400x400.jpg
     ```
 
 1. Uff now you're ready - generate your static site.
@@ -286,19 +324,26 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
     hugo
     ```
 
-#### Summary
+### Summary - Hugo
 
-Now you have folder `public` with static content of your page. What's next? Upload to GitHub? No, that will be too fast and too easy. We need real tests. Let's say hello to Nginx.
+Now you have folder `public` with static
+content of your page. What's next? Upload to GitHub?
+No, that will be too fast and too easy.
+We need real tests. Let's say hello to Nginx.
 
 ## Nginx
 
-[Nginx][6] (pronounced "engine X") is a web server that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache. The software was created by Igor Sysoev and first publicly released in 2004.
+[Nginx][6] (pronounced "engine X") is a
+web server that can also be used as a reverse proxy,
+load balancer, mail proxy, and HTTP cache. The software
+was created by Igor Sysoev and first publicly released in 2004.
 
-### Why?
+### Why Nginx
 
-Nginx is open-source, popular and fast. Another obvious choice.
+Nginx is open-source, popular and fast.
+Another obvious choice.
 
-#### Let's code
+### Let's code- Nginx
 
 1. Copy `public/` into `/var/www/`
 
@@ -311,10 +356,13 @@ Nginx is open-source, popular and fast. Another obvious choice.
 1. Change owner of a file
 
     ```bash
-    sudo chown -R $(ps aux|grep nginx|grep -v grep| grep -v master| cut -d" " -f1). /var/www/public/
+    sudo chown -R  \
+    $(ps aux|grep nginx|grep -v grep| grep -v master| cut -d" " -f1). \
+    /var/www/public/
 
     # -R = copy directories recursively
-    # $(ps aux|grep nginx|grep -v grep| grep -v master| cut -d" " -f1). = get owner of nginx worker
+    # $(ps aux|grep nginx|grep -v grep| grep -v master| cut -d" " -f1).
+    # = get owner of nginx worker
         # $(). = get output as a command argument, `.` = set same group as owner
 
     # ps aux|grep nginx|grep -v grep| grep -v master| cut -d" " -f1
@@ -366,15 +414,19 @@ Nginx is open-source, popular and fast. Another obvious choice.
 
 1. Destroy the Terraform-managed infrastructure
 
-    `WARNING` - At the end of learning session destroy unused infrastructure - it's cheaper
+    `WARNING` - At the end of learning
+    session destroy unused infrastructure - it's cheaper
 
     ```bash
     terraform destroy
     ```
 
-#### Summary
+### Summary - Nginx
 
-Now we have a working static site on GCP instance, with the usage of Terraform and Nginx. That's only beginning, another step will be deploying this site just inside GitHub Pages.
+Now we have a working static site on
+GCP instance, with the usage of Terraform and Nginx.
+That's only beginning, another step will be deploying
+this site just inside GitHub Pages.
 
 [1]: https://pages.github.com/
 [2]: https://themes.gohugo.io/

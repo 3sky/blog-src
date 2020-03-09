@@ -10,7 +10,16 @@ externalLink = ""
 series = ["GitHub Pages"]
 +++
 
-In the previous episode, I have created a short blog post about `short blog post`. That was quite interesting for me, in meantime, I configure my VSC for English support, add some small fixes in the Markdown file then I realized that the manual reload of configuration is a huge mistake in the context of productive. What is the first tool when we start thinking about automation? In Linux environment of course. For me, it's `Bash`. Let's begin then.
+# Welcome
+
+In the previous episode, I have created a short
+blog post about `short blog post`. That was quite
+interesting for me, in meantime, I configure my VSC for English
+support, add some small fixes in the Markdown file then I realized
+that the manual reload of configuration is a huge mistake in the
+context of productive. What is the first tool when we start thinking
+about automation? In Linux environment of course. For me, it's `Bash`.
+Let's begin then.
 
 ## Tools used in this episode
 
@@ -19,13 +28,17 @@ In the previous episode, I have created a short blog post about `short blog post
 
 ## Bash
 
-[Bash][1] is an sh-compatible shell that incorporates useful features from the Korn shell (ksh) and C shell (csh)
+[Bash][1] is an sh-compatible shell
+that incorporates useful features from the Korn shell (ksh) and C shell (csh)
 
-### Why?
+### Why Bash
 
-Bash is everywhere, on almost every modern *nix system. Maybe it's not most readable language, but if you have at least small idea what you want to achieve, then that's enough to automate it with `Bash`
+Bash is everywhere, on almost every modern *nix system.
+Maybe it's not most readable language, but if you have
+at least small idea what you want to achieve,
+then that's enough to automate it with `Bash`
 
-#### Let's code
+### Let's code - Bash
 
 1. Go inside `3sky.io` and open a new file
 
@@ -60,13 +73,15 @@ Bash is everywhere, on almost every modern *nix system. Maybe it's not most read
     sudo cp -R $PROJECT_DIR/public /var/www/
 
     # Change owner of file
-    sudo chown -R $(ps aux|grep nginx|grep -v grep| grep -v master| cut -d" " -f1). /varwww/public/
+    sudo chown -R \
+    $(ps aux|grep nginx|grep -v grep| grep -v master| cut -d" " -f1).\
+    /varwww/public/
 
     # Restart Nginx
     sudo systemctl restart nginx.service
     ```
 
-    It's very similar to steps from the previous post, isn't it? 
+    It's very similar to steps from the previous post, isn't it?
 
 1. Add execution permission
 
@@ -83,21 +98,32 @@ Bash is everywhere, on almost every modern *nix system. Maybe it's not most read
     ./deploy.sh
     ```
 
-#### Summary
+### Summary - Bash
 
-After that small intervention, I cat reload my developer service after every update without any problems or manual work. The important fact is that the bash script works and is stable. Not everything is as pleasant as not repeating boring work. Now it's time for go-live.
+After that small intervention,
+I cat reload my developer service after every
+update without any problems or manual work. The important fact is
+that the bash script works and is stable. Not everything is as
+pleasant as not repeating boring work. Now it's time for go-live.
 
 ## GitHub Pages
 
-[GitHub Pages][2] is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process and publishes a website. You can see examples of GitHub Pages sites in the GitHub Pages examples collection.
+[GitHub Pages][2] is a static site
+hosting service that takes HTML, CSS, and JavaScript
+files straight from a repository on GitHub, optionally runs
+the files through a build process and publishes a website.
+You can see examples of GitHub Pages sites in the GitHub Pages examples collection.
 
-### Why?
+### Why GitHub Pages
 
-We already talk about that, it's free and till writing this series I didn't hear any complaints. Also, I have a simple [documentation][3]. So why not? 
+We already talk about that, it's free
+and till writing this series I didn't hear
+any complaints. Also,
+I have a simple [documentation][3]. So why not?
 
-#### Let's code
+### Let's code - GitHub Pages
 
-1. Create a GitHub repo with schema `github.com/username/username.github.io` and clone it
+1. Create a GitHub
 
     ```bash
     git clone https://github.com/username/username.github.io
@@ -164,9 +190,16 @@ We already talk about that, it's free and till writing this series I didn't hear
 
         1. And I'm done blog is live, but...
 
-#### Summary
+#### Summary - GitHub Pages
 
-It's working very slow. My first deployment lasted more than 1hour, so take a breath and just go for a walk, I can recommend a long walk. What will be next? CD system, but which one? And what about automatic test? You can ask now `why the heck I need automatic tests?`. Because if something takes so long, it's better to deploy a stable and tested version.  
+It's working very slow.
+My first deployment lasted more than 1hour,
+so take a breath and just go for a walk,
+I can recommend a long walk. What will be next?
+CD system, but which one? And what about automatic test?
+You can ask now `why the heck I need automatic tests?`.
+Because if something takes so long, it's better to deploy
+a stable and tested version.
 
 [1]: https://www.gnu.org/software/bash/
 [2]: https://help.github.com/en/github/working-with-github-pages/about-github-pages

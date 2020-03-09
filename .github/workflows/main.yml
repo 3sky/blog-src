@@ -13,9 +13,13 @@ jobs:
       run: echo Hello, world!
     - name: Install Hugo
       run: sudo snap install hugo
+    - name: Install ruby-dev
+      run: sudo ap-get install ruby-dev
+    - name: Install rake and bundler
+      run: sudo gem install rake bundler
+    - name: Run tests
+      run: mdl content/*
     - name: Run deploy.sh
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: sh ./deploy.sh
-
- 
