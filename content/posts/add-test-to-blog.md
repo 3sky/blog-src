@@ -22,7 +22,7 @@ Why it's mandatory? Because of my grammar errors, formatting errors,
 and general errors. Nobody wants to have typos, broken markdown content
 on the official blog page. At least I want to avoid it :) So I decided to use [markdownlint][2],
 project as my Markdown linter. Also, I need to integrate my content with some grammar
-checker.  
+checker.
 
 ## Tools used in this episode
 
@@ -83,7 +83,8 @@ In case of any problem, I can just change a tool.
 That again was easy, isn't it? Isn't :) Usage of this
 linter requires a lot of work from my side, especially
 with [MD013][3] error type. Adding fixes and tracking
-all `space` errors was an arduous process, but finally,
+all `space` errors was an arduous process -
+every single error can break my build, but finally,
 I get well-formatted, correct Markdown files.
 
 [1]: https://www.thoughtworks.com/continuous-integration
