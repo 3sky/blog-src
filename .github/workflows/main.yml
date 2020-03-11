@@ -29,7 +29,7 @@ jobs:
     - name: Run tests
       run: | 
         mkdir -p tmp
-        for i in $(ls content/posts/); do sed '/```/,/```/d' $i > tmp/$i; done
+        for i in $(ls content/posts/); do sed '/```/,/```/d' content/posts/$i > tmp/$i; done
         mdl content/*
         for i in $(ls tmp/); do ./grammary-cli -token ${{ secrets.GB_TOKEN }} -path tmp/$i; done
     - name: Run deploy.sh
