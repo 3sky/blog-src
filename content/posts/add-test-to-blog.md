@@ -66,14 +66,12 @@ In case of any problem, I can just change a tool.
           run: echo Hello, world!
         - name: Install Hugo
           run: sudo snap install hugo
-          # Start test
-        - name: Install ruby-dev
+        - name: Install ruby-dev # Start test
           run: sudo ap-get install ruby-dev
         - name: Install rake and bundler
           run: sudo gem install rake bundler
         - name: Run tests
-          run: mdl content/*
-          # End of test
+          run: mdl content/* # End of test
         - name: Run deploy.sh
           env:
             GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -178,8 +176,7 @@ Documentation also looks clean and understandable.
             run: |
               sudo gem install rake bundler mdl
               sudo gem update --system 3.0.6
-            # BEGINNING This section will be discussed in another post
-          - name: Setup GCP
+          - name: Setup GCP # BEGINNING This section will be discussed in another post
             uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
             with:
               version: '281.0.0'
@@ -189,8 +186,7 @@ Documentation also looks clean and understandable.
           - name: Get grammary-cli
             run: |
               gsutil cp gs://grammarybot-cli/grammary-cli .
-              chmod +x grammary-cli
-            # END This section will be descused in another post
+              chmod +x grammary-cli # END This section will be descused in another post
           - name: Run tests
             run: |
               mkdir -p tmp

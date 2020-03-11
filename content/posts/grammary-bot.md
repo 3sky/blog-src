@@ -328,20 +328,16 @@ Token is provided as a parameter, so there is no hardcodes.
           uses: actions/setup-go@v1
           with:
             go-version: 1.14.x
-        - name: Setup GCP
-          # Install GCP stuff
-        - name: verify gsutil installation
-          # Verify instalation
+        - name: Setup GCP # Install GCP stuff
+        - name: verify gsutil installation # Verify instalation
         - name: Checkout code
           uses: actions/checkout@v2
         - name: Test
           run: go test ./... -v
         - name: Build
           run: go build -o grammary-cli
-        - name: Deploy
-          # Deploy binary
-        - name: notify
-          # Send notification
+        - name: Deploy  # Deploy binary
+        - name: notify # Send notification
     ```
 
 ## Google Cloud Platform
