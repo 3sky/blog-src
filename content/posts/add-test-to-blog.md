@@ -176,7 +176,8 @@ Documentation also looks clean and understandable.
             run: |
               sudo gem install rake bundler mdl
               sudo gem update --system 3.0.6
-          - name: Setup GCP # BEGINNING This section will be discussed in another post
+          - name: Setup GCP
+            # This section will be discussed in another post
             uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
             with:
               version: '281.0.0'
@@ -186,7 +187,8 @@ Documentation also looks clean and understandable.
           - name: Get grammary-cli
             run: |
               gsutil cp gs://grammarybot-cli/grammary-cli .
-              chmod +x grammary-cli # END This section will be descused in another post
+              chmod +x grammary-cli
+            # This section will be descused in another post
           - name: Run tests
             run: |
               mkdir -p tmp
