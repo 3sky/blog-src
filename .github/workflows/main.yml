@@ -25,7 +25,9 @@ jobs:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         export_default_credentials: true
     - name: Get grammary-cli
-      run: gsutil cp gs://grammarybot-cli/grammary-cli .      
+      run: |
+        gsutil cp gs://grammarybot-cli/grammary-cli .
+        chmod +x grammary-cli      
     - name: Run tests
       run: | 
         mkdir -p tmp
