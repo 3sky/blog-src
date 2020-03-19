@@ -1,7 +1,7 @@
 +++
 draft = false
 date = 2020-02-24T21:55:02Z
-title = "How to use GitHub Pages #1"
+title = "Build static blog on GitHub Pages #1"
 description = "GitHub page at the hard way"
 slug = ""
 tags = ["GCP", "Terraform", "Hugo", "Nginx"]
@@ -228,7 +228,7 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
     1. Setup minimal config
 
         ```toml
-        title = "Personal blog"
+        title = "Learning notes"
         theme = "hugo-coder"
         languagecode = "en"
         defaultcontentlanguage = "en"

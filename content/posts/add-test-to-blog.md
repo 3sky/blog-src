@@ -1,7 +1,7 @@
 +++
 draft = false
 date = 2020-03-10T22:55:02Z
-title = "How to... add automatic tests"
+title = "Continuous integration/testing for static blog"
 description = "GitHub page at the hard way"
 slug = ""
 tags = ["mdl", "GitHub Action", "grammarbot.io"]

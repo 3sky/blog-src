@@ -32,7 +32,7 @@ jobs:
       run: | 
         mkdir -p tmp
         for i in $(ls content/posts/); do sed '/```/,/```/d' content/posts/$i > tmp/$i; done
-        mdl content/*
+        mdl --r ~MD013 content/*
         for i in $(ls tmp/); do ./grammary-cli -token ${{ secrets.GB_TOKEN }} -path tmp/$i; done
     - name: Run deploy.sh
       env:

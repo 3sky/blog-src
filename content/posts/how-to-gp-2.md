@@ -1,7 +1,7 @@
 +++
 draft = false
 date = 2020-02-26T22:55:46Z
-title = "How to use GitHub Pages #2"
+title = "Build static blog on GitHub Pages #2"
 description = "GitHub page at the hard way"
 slug = ""
 tags = ["GCP", "Terraform", "Hugo", "Nginx"]

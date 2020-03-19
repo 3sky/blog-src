@@ -1,7 +1,7 @@
 +++
 draft = false
 date = 2020-03-10T23:55:02Z
-title = "How to... write useless tool"
+title = "Build grammarbot client in Go"
 description = "GitHub page at the hard way"
 slug = ""
 tags = ["Go", "GitHub Action", "GCP", "Telegram"]
@@ -13,7 +13,7 @@ series = ["GitHub Pages"]
 # Welcome
 
 While working with [grammarbot][1], I decided
-to create my own CLI tool/client for working with API.
+to create my own command-line tool/client for working with API.
 As a language, I have chosen [Golang][2]. After that, I have added
 GitHub Action and gsutil. Also, I have configured Telegrams bot
 for notification purpose. Sounds like fun? For me definitely.

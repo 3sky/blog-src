@@ -1,7 +1,7 @@
 +++
 draft = false
 date = 2020-03-01T22:19:54Z
-title = "How deliver blog page"
+title = "Continuous delivery for static blog"
 description = "Deliver with style"
 slug = ""
 tags = ["Travis ci", "Circle ci"]
