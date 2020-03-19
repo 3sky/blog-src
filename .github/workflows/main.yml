@@ -13,8 +13,9 @@ jobs:
       run: echo Hello, world!
     - name: Install Hugo
       run: | 
-         sudo snap install hugo &&
-         git submodule add https://github.com/luizdepra/hugo-coder.git themes/hugo-coder
+        wget https://github.com/gohugoio/hugo/releases/download/v0.67.0/hugo_0.67.0_Linux-64bit.deb
+        sudo dpkg -i hugo_0.67.0_Linux-64bit.deb
+        git submodule add https://github.com/luizdepra/hugo-coder.git themes/hugo-coder
     - name: Install ruby-dev
       run: sudo apt-get install ruby-dev
     - name: Install depedances for mdl
@@ -32,10 +33,10 @@ jobs:
         chmod +x grammary-cli      
     - name: Run tests
       run: | 
-        mkdir -p tmp
-        for i in $(ls content/posts/); do sed '/```/,/```/d' content/posts/$i > tmp/$i; done
         mdl --r ~MD013 content/*
-        for i in $(ls tmp/); do ./grammary-cli -token ${{ secrets.GB_TOKEN }} -path tmp/$i; done
+        # mkdir -p tmp
+        # for i in $(ls content/posts/); do sed '/```/,/```/d' content/posts/$i > tmp/$i; done
+        # for i in $(ls tmp/); do ./grammary-cli -token ${{ secrets.GB_TOKEN }} -path tmp/$i; done
     - name: Run deploy.sh
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}

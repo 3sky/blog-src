@@ -1,5 +1,5 @@
 +++
-draft = false
+draft = true
 date = 2020-03-18T23:55:02Z
 title = "Clojure app on Google Cloud Run"
 description = "Document with solution of interview tasks with handbook"
