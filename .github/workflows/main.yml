@@ -12,7 +12,9 @@ jobs:
     - name: Run a one-line script
       run: echo Hello, world!
     - name: Install Hugo
-      run: sudo snap install hugo
+      run: | 
+         sudo snap install hugo &&
+         git submodule add https://github.com/luizdepra/hugo-coder.git themes/hugo-coder
     - name: Install ruby-dev
       run: sudo apt-get install ruby-dev
     - name: Install depedances for mdl
