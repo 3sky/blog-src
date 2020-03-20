@@ -5,7 +5,7 @@ defaultcontentlanguage = "en"
 paginate = 20
 pygmentsstyle = "dracula"
 pygmentscodefences = true
-pygmentscodefencesguesssyntax = false
+pygmentscodefencesguesssyntax = true
 enableRobotsTXT= true
 
 googleAnalytics = "UA-159451243-1"
