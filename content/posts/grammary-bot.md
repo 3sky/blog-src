@@ -84,22 +84,18 @@ I just like Go.
     }
 
     func main() {
-
         // Constants variables - I like CAPS style
         LANGAUGE := "en-US"
         URL := "http://api.grammarbot.io/v2/check"
-
         // CLI flag declatarion
         botToken := flag.String("token", "XYZ", "Grammarbot token")
         pathToFile := flag.String("path", "", "Path to file")
         flag.Parse()
-
         //loading file to check
         text, err := LoadFile(*pathToFile)
         if err != nil {
             fmt.Println(err)
         }
-
         // usage retry function becouse of
         // Internall Server Error
         err = retry(3, time.Second*3, func() error {
@@ -113,7 +109,6 @@ I just like Go.
 
     //LoadFile load file and check against planlimit
     func LoadFile(path string) (string, error) {
-
         pwd, err := os.Getwd()
         defer func() {
             if err != nil {
@@ -121,7 +116,6 @@ I just like Go.
                 os.Exit(1)
             }
         }()
-
         content, err := ioutil.ReadFile(pwd + "/" + path)
         defer func() {
             if err != nil {
@@ -129,7 +123,6 @@ I just like Go.
                 os.Exit(1)
             }
         }()
-
         text := string(content)
         defer func() {
             if len(text) > FreePlanLimit {
@@ -137,13 +130,10 @@ I just like Go.
                 os.Exit(1)
             }
         }()
-
         return text, nil
     }
-
     //CheckText send text to grammary
     func CheckText(lang, url, token, text string) error {
-
         var client http.Client
         var data ResponseStruct
         req, err := http.NewRequest("POST", url, nil)
@@ -155,44 +145,36 @@ I just like Go.
         q.Add("language", lang)
         q.Add("text", text)
         req.URL.RawQuery = q.Encode()
-
         resp, err := client.Do(req)
         if err != nil {
             return err
         }
-
         if resp.StatusCode != 200 {
             return errors.New("Internal GrammaryBot Error")
         }
-
         err = json.NewDecoder(resp.Body).Decode(&data)
         if err != nil {
             return err
         }
-
         x, err := json.MarshalIndent(data.Matches, "", "\t")
         if err != nil {
             return err
         }
-
         // empty len((string(x)) == 2
         if len(string(x)) <= 2 {
             fmt.Println("Text is OK")
         } else {
             fmt.Println(string(x))
         }
-
         return nil
     }
 
     // to avoid Internal Server Error from GrammaryBot side
     func retry(attempts int, sleep time.Duration, fn func() error) error {
-
         if err := fn(); err != nil {
             if s, ok := err.(stop); ok {
                 return s.error
             }
-
             if attempts--; attempts > 0 {
                 fmt.Printf("Take a try: %d", attempts)
                 time.Sleep(sleep)
@@ -222,7 +204,6 @@ I just like Go.
         URL := "http://api.grammarbot.io/v2/check"
         botToken := "XYZ"
         text := "I can't remember how to go their"
-
         err := CheckText(LANGAUGE, URL, botToken, text)
         if err != nil {
             t.Errorf("Error with CheckText funtion")
@@ -230,7 +211,6 @@ I just like Go.
     }
 
     func TestLoadFile(t *testing.T) {
-
         PATH := "go.mod"
         str, err := LoadFile(PATH)
         if err != nil {

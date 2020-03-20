@@ -132,13 +132,11 @@ editor.
         p_name = "my-small-gcp-project"
     }
 
-
     provider "google" {
         credentials = file("auth.json")
         project     = local.p_name
         region      = local.region_eu
     }
-
 
     // Terraform plugin for creating random ids
     resource "random_id" "instance_id" {
@@ -682,12 +680,9 @@ reason to use Jenkins.
         branches:
         - '*'
 
-
     jobs:
     build-test-docker:
-
         runs-on: ubuntu-latest
-
         steps:
         - uses: actions/checkout@v2
         - name: build app

@@ -67,13 +67,11 @@ Also managing infrastructure as a code it’s so satisfying.
         project_name = "tokyo-baton-256120"
     }
 
-
     provider "google" {
         credentials = file("auth.json")     // path to `auth.json`
         project     = local.project_name
         region      = local.region_eu
     }
-
 
     // Terraform plugin for creating random ids
     resource "random_id" "instance_id" {
@@ -112,7 +110,6 @@ Also managing infrastructure as a code it’s so satisfying.
         }
     }
 
-
     data "google_compute_subnetwork" "my-subnetwork" {
         name   = "default-${local.region_eu}"
         region = "europe-west3"
@@ -122,7 +119,6 @@ Also managing infrastructure as a code it’s so satisfying.
     resource "google_compute_firewall" "default" {
         name    = "app-firewall"
         network = "default"
-
         allow {
             protocol = "tcp"
             ports    = ["80"]

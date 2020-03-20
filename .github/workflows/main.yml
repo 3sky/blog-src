@@ -33,7 +33,7 @@ jobs:
         chmod +x grammary-cli      
     - name: Run tests
       run: | 
-        mdl --r ~MD013 content/*
+      mdl --r ~MD013,~MD034 content/*
         # mkdir -p tmp
         # for i in $(ls content/posts/); do sed '/```/,/```/d' content/posts/$i > tmp/$i; done
         # for i in $(ls tmp/); do ./grammary-cli -token ${{ secrets.GB_TOKEN }} -path tmp/$i; done

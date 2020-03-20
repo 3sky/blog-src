@@ -57,9 +57,7 @@ In case of any problem, I can just change a tool.
 
     jobs:
     build:
-
         runs-on: ubuntu-latest
-
         steps:
         - uses: actions/checkout@v2
         - name: Run a one-line script
@@ -161,9 +159,7 @@ Documentation also looks clean and understandable.
 
       jobs:
         build:
-
           runs-on: ubuntu-latest
-
           steps:
           - uses: actions/checkout@v2
           - name: Run a one-line script
