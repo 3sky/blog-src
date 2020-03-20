@@ -50,7 +50,7 @@ In case of any problem, I can just change a tool.
     I would like to add linter to automatic pipeline,
     so changes in `.github/workflows/main.yml` are mandatory.
 
-    ```yaml
+    ```yaml {linenos=table}
     name: CI
 
     on: [push]
@@ -112,7 +112,7 @@ Documentation also looks clean and understandable.
 
 1. Basic usage
 
-    ```bash
+    ```console
     curl -s -X POST \
     -d "api_key=XYZ" \
     -d "language=en-US" \
@@ -154,7 +154,7 @@ Documentation also looks clean and understandable.
     That's time to make from it real a pipeline.
     So final GitHub Action manifest looks like that.
 
-      ```yaml
+      ```yaml {linenos=table}
       name: CI
 
       on: [push]

@@ -75,7 +75,7 @@ If I remember correctly is quite easy, but only "war never changes"...
 
 1. Add small `.travis.yml` file:
 
-    ```yaml
+    ```yaml {linenos=table}
     dist: xenial
     addons:
     snaps:
@@ -90,7 +90,7 @@ If I remember correctly is quite easy, but only "war never changes"...
 
 1. Do You remember our script `run.sh`, now need some modification
 
-    ```bash
+    ```bash {linenos=table}
     #!/bin/bash
     set -e
     # -e = Exit immediately if a command exits with a non-zero status
@@ -163,7 +163,7 @@ I have worked with this solution in the past.
     Adding a project it's easy, after that you get information about
     suggested CircleCI configuration. That's the example "Hello World"
 
-    ```yaml
+    ```yaml {linenos=table}
     # Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
     version: 2.1
     # Use a package of configuration called an orb.
@@ -183,7 +183,7 @@ I have worked with this solution in the past.
 
 1. Add my own `.circleci/config.yml` in the root of the repository.
 
-    ```yaml
+    ```yaml {linenos=table}
     version: 2.1
     jobs:
     build:
@@ -246,7 +246,7 @@ a lot of example on the Internet, what could go wrong then?
     Creator is easier to use than exploring all this template.
 1. I need to add one file `.github/workflow/main.yaml`
 
-    ```yaml
+    ```yaml {linenos=table}
     name: CI
 
     on: [push]

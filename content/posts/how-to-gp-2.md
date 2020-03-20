@@ -53,7 +53,7 @@ then that's enough to automate it with `Bash`
 
 1. Write a script
 
-    ```bash
+    ```bash {linenos=table}
     #!/bin/bash
     set -e
     # -e = Exit immediately if a command exits with a non-zero status

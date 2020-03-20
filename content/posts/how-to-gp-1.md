@@ -60,7 +60,7 @@ Also managing infrastructure as a code it’s so satisfying.
 
 1. Create `main.tf`
 
-    ```json
+    ```hcl {linenos=table}
     // Set local variable
     locals {
         region_eu = "europe-west3-a"
@@ -227,7 +227,7 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
 
     1. Setup minimal config
 
-        ```toml
+        ```toml {linenos=table}
         title = "Learning notes"
         theme = "hugo-coder"
         languagecode = "en"
@@ -311,7 +311,7 @@ Hugo is open-source and written in Go. In compare to Jekyll(Ruby) choice was eas
 
 1. Add avatar
 
-    ```bash
+    ```console
     mkdir static/images
     # that's my photo from Twitter
     wget -Ostatic/images/avatar.jpg \

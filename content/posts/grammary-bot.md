@@ -60,7 +60,7 @@ I just like Go.
 
 1. Create `main.go`
 
-    ```go
+    ```go {linenos=table}
     package main
 
     // only standard libs
@@ -209,7 +209,7 @@ I just like Go.
 
 1. Define some basic tests `main_test.go`
 
-    ```go
+    ```go {linenos=table}
     package main
 
     import (
@@ -264,7 +264,7 @@ I just like Go.
 
     And works, but the output is very long so I passed only a part:
 
-    ```bash
+    ```json
     ...
       {
             "message": "Possible typo: you repeated a whitespace",
@@ -317,7 +317,7 @@ Token is provided as a parameter, so there is no hardcodes.
     That will be the pipeline for the `deploy` app to Google Storage.
     So the sceleton will be:
 
-    ```yaml
+    ```yaml {linenos=table}
     on: [push]
     name: grammary-cli
     jobs:
@@ -349,7 +349,7 @@ Token is provided as a parameter, so there is no hardcodes.
     In GitHub Action we have ready `actions` avalaible in [market][5].
     So I decided to use one.
 
-    ```yaml
+    ```yaml {linenos=table}
     - name: Setup GCP
       uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
@@ -380,7 +380,7 @@ Token is provided as a parameter, so there is no hardcodes.
 
 1. Deploy binary to Storage
 
-    ```yaml
+    ```yaml {linenos=table}
     - name: Deploy
       run: |
         ls -lR
@@ -425,7 +425,7 @@ Token is provided as a parameter, so there is no hardcodes.
     I would like to get some notification after the build.
     Telegram is a nice tool, and there is already created [GH Action][7].
 
-    ```yaml
+    ```yaml {linenos=table}
     - name: test telegram notification
       uses: appleboy/telegram-action@master
       with:
@@ -447,7 +447,7 @@ Token is provided as a parameter, so there is no hardcodes.
 
 ## Final main.yml
 
-```yaml
+```yaml {linenos=table}
 on: [push]
 name: grammary-cli
 jobs:

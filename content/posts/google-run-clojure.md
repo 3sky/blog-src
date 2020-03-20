@@ -1,5 +1,5 @@
 +++
-draft = true
+draft = false
 date = 2020-03-18T23:55:02Z
 title = "Clojure app on Google Cloud Run"
 description = "Document with solution of interview tasks with handbook"
@@ -36,7 +36,7 @@ Cloud Run is very nice and cheap for a one-docker small app.
 
 1. Create a new project
 
-    ```bash
+    ```console
     gcloud projects create [PROJECT_ID] --enable-cloud-apis
 
     # --enable-cloud-apis
@@ -47,7 +47,7 @@ Cloud Run is very nice and cheap for a one-docker small app.
 
 1. Enable services
 
-    ```bash
+    ```console
     gcloud services list --available | grep -e run -e compute -e container
     gcloud services enable compute.googleapis.com
     gcloud services enable container.googleapis.com
@@ -62,34 +62,34 @@ Cloud Run is very nice and cheap for a one-docker small app.
 
 1. Create a service account and add necessary permission
 
-    ```bash
+    ```console
     gcloud iam service-accounts create ci-cd-user \
     --description "Account for interact with GCP Run, CR and GitHub" \
     --display-name "my-github-user"
     ```
 
-    ```bash
+    ```console
     gcloud projects add-iam-policy-binding my-small-gcp-project \
     --member \
     serviceAccount:ci-cd-user@my-small-gcp-project.iam.gserviceaccount.com \
     --role roles/compute.admin
     ```
 
-    ```bash
+    ```console
     gcloud projects add-iam-policy-binding my-small-gcp-project \
     --member \
     serviceAccount:ci-cd-user@my-small-gcp-project.iam.gserviceaccount.com \
     --role roles/run.serviceAgent
     ```
 
-    ```bash
+    ```console
     gcloud projects add-iam-policy-binding my-small-gcp-project \
     --member \
     serviceAccount:ci-cd-user@my-small-gcp-project.iam.gserviceaccount.com \
     --role roles/run.admin
     ```
 
-    ```bash
+    ```console
     gcloud projects add-iam-policy-binding my-small-gcp-project \
     --member \
     serviceAccount:ci-cd-user@my-small-gcp-project.iam.gserviceaccount.com \
@@ -112,7 +112,7 @@ editor.
 
 1. Getting project credentials in JSON.
 
-    ```bash
+    ```console
     gcloud iam service-accounts keys create auth.json \
     --iam-account ci-cd-user@my-small-gcp-project.iam.gserviceaccount.com
     ```
@@ -126,7 +126,7 @@ editor.
 
 1. Create `main.tf`
 
-    ```json
+    ```hcl {linenos=table}
     locals {
         region_eu = "europe-west3-a"
         p_name = "my-small-gcp-project"
@@ -233,7 +233,7 @@ but I like it. Also working with a various solution is always fun.
 
     1. Install Clojure on Linux
 
-        ```bash
+        ```console
         curl -O https://download.clojure.org/install/linux-install-1.10.1.536.sh
         chmod +x linux-install-1.10.1.536.sh
         sudo ./linux-install-1.10.1.536.sh
@@ -241,9 +241,8 @@ but I like it. Also working with a various solution is always fun.
 
     1. Install Leiningen
 
-        ```bash
-        wget \
-        https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein \
+        ```console
+        wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein \
         -O /usr/bin/lein
         chmod a+x /usr/bin/lein
         lein
@@ -276,7 +275,7 @@ but I like it. Also working with a various solution is always fun.
 
 1. Let's do TDD so tests first
 
-    ```clojure
+    ```clojure {linenos=table}
     ;test/clojure_raw_rest_api/core_test.clj
     ...
     (ns clojure-raw-rest-api.core-test
@@ -311,7 +310,7 @@ but I like it. Also working with a various solution is always fun.
 
 1. Make a basic REST API implementation
 
-    ```clojure
+    ```clojure {linenos=table}
     ;src/clojure_raw_rest_api/core.clj
     ...
     (ns clojure-raw-rest-api.core
@@ -383,7 +382,7 @@ but I like it. Also working with a various solution is always fun.
 
 1. Ahh and `project.clj` update
 
-    ```clojure
+    ```clojure {linenos=table}
     (defproject clojure-raw-rest-api "1.0.0"
     :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
                 :url "https://www.eclipse.org/legal/epl-2.0/"}
@@ -465,7 +464,7 @@ however, I need to take a look an another solution like distroless.
     touch Dockerfile
     ```
 
-    ```Dockerfile
+    ```Dockerfile {linenos=table}
     FROM clojure as builder
     RUN mkdir -p /usr/src/app
     WORKDIR /usr/src/app
@@ -483,7 +482,7 @@ however, I need to take a look an another solution like distroless.
 
 1. Test build
 
-    ```bash
+    ```bsah
     docker build . -t clojure-app
     ```
 
@@ -520,7 +519,7 @@ however, I need to take a look an another solution like distroless.
 
 1. Push to Container Registry
 
-    ```bash
+    ```console
     gcloud auth configure-docker
     gcloud auth activate-service-account \
     ci-cd-user@my-small-gcp-project.iam.gserviceaccount.com \
@@ -535,7 +534,7 @@ however, I need to take a look an another solution like distroless.
 
 1. Create Cloud Run Service for prod
 
-    ```bash
+    ```console
     gcloud run deploy prod-awesome-clojure-api \
     --platform managed \
     --allow-unauthenticated \
@@ -547,7 +546,7 @@ however, I need to take a look an another solution like distroless.
 
 1. Create Cloud Run Service for non-prod
 
-    ```bash
+    ```console
     gcloud run deploy staging-awesome-clojure-api \
     --platform managed \
     --allow-unauthenticated \
@@ -596,7 +595,7 @@ reason to use Jenkins.
 
 1. Push/PR to master - `master.yml`
 
-    ```yaml
+    ```yaml {linenos=table}
     name: Build from master
 
     on:
@@ -671,7 +670,7 @@ reason to use Jenkins.
 
 1. Push/PR to not master - `no-master.yml`
 
-    ```yaml
+    ```yaml {linenos=table}
     name: Build from no-master
 
     on:
@@ -706,7 +705,7 @@ I decided to add a notification.
 
 1. Add to `master.yaml`
 
-    ```yaml
+    ```yaml {linenos=table}
     send-notification:
       needs: [build-the-app, deploy-to-stg, deploy-to-prod]
       runs-on: ubuntu-latest
@@ -746,7 +745,7 @@ I decided to add a notification.
     I would like to get some notification after the build.
     Telegram is a nice tool, and there is already created [GH Action][7].
 
-    ```yaml
+    ```yaml {linenos=table}
     - name: test telegram notification
       uses: appleboy/telegram-action@master
       with:
