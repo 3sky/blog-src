@@ -308,7 +308,7 @@ but I like it. Also working with a various solution is always fun.
 
 1. Make a basic REST API implementation
 
-    ```clojure {linenos=table}
+    ```clojure {linenos=true}
     ;src/clojure_raw_rest_api/core.clj
     ...
     (ns clojure-raw-rest-api.core
@@ -462,7 +462,7 @@ however, I need to take a look an another solution like distroless.
     touch Dockerfile
     ```
 
-    ```Dockerfile {linenos=table}
+    ```Dockerfile {linenos=true}
     FROM clojure as builder
     RUN mkdir -p /usr/src/app
     WORKDIR /usr/src/app
@@ -625,11 +625,9 @@ reason to use Jenkins.
         - name: build app
           run: docker build . -t $APP_NAME
         - name: tag app
-          run: |
-            docker tag $APP_NAME gcr.io/${{ secrets.PROJECT_ID }}/$APP_NAME:${{ github.sha }}
+          run: docker tag $APP_NAME gcr.io/${{ secrets.PROJECT_ID }}/$APP_NAME:${{ github.sha }}
         - name: push image
-          run: |
-            docker push gcr.io/${{ secrets.PROJECT_ID }}/$APP_NAME:${{ github.sha }}
+          run: docker push gcr.io/${{ secrets.PROJECT_ID }}/$APP_NAME:${{ github.sha }}
 
     deploy-to-stg:
         needs: build-the-app
@@ -643,8 +641,7 @@ reason to use Jenkins.
             service_account_key: ${{ secrets.GCP_SA_KEY }}
             export_default_credentials: true
         - name: update staging
-          run: |
-            gcloud run deploy $STG_SERVICE --project ${{ secrets.PROJECT_ID }} --platform managed --region europe-west1 --image gcr.io/${{ secrets.PROJECT_ID }}/$APP_NAME:${{ github.sha }}
+          run: gcloud run deploy $STG_SERVICE --project ${{ secrets.PROJECT_ID }} --platform managed --region europe-west1 --image gcr.io/${{ secrets.PROJECT_ID }}/$APP_NAME:${{ github.sha }}
         - name: Check stg
           run: if [[ ! $(curl -s $STG_URL/status | grep ok) ]]; then exit 1; fi
 
@@ -710,9 +707,7 @@ I decided to add a notification.
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            Build number ${{ github.run_number }}
-            of ${{ github.repository }} is complete ;)
+          message: Build number ${{ github.run_number }} of ${{ github.repository }} is complete ;)
     ```
 
 1. Telegram configuration
@@ -746,10 +741,7 @@ I decided to add a notification.
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: |
-          Hello my Master
-          Build number ${{ github.run_number }}
-          of ${{ github.repository }} is complete ;)
+        message: Build number ${{ github.run_number }} of ${{ github.repository }} is complete ;)
     ```
 
     That snipped contains two secrets `secrets.TELEGRAM_TO`
