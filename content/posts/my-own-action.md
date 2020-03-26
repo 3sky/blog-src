@@ -246,7 +246,7 @@ It's a long, ugly and time-consuming solution. Shell scripts are
 long and susceptible to manual error.
 Especially when we talk about line breaks inside YAML.
 
-### Solution no.12
+### Solution no.2
 
 1. Create new repo with License file (`MIT` is 'okay`)
 
@@ -480,12 +480,12 @@ Especially when we talk about line breaks inside YAML.
     - name: deploy app
       uses: 3sky/furry-octo-parakeet@master
       with:
-        auth_file: ${{ secrets.gcp_sa_key }}
+        auth_file: ${{ secrets.GCP_SA_KEY }}
         action: 'run'
         name: "$PROD_SERVICE"
         region: 'europe-west1'
         allow: true
-        image: "gcr.io/$PROJECT_ID/$APP_NAME:${{ github.sha }}"
+        image: "gcr.io/{{ secrets.PROJECT_ID }}/$APP_NAME:${{ github.sha }}"
     ```
 
 ## Summary
