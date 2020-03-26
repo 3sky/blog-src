@@ -216,8 +216,8 @@ changes.
     - name: Check PROD
       uses: 3sky/glowing-spoon@v0.0.1
       with:
-        hostname: "$PROD_URL"
-        path: 'status'
+        hostname: ${{ env.PROD_URL }}
+        path: '/status'
         filter: '.status'
         expected: 'ok'
     ```
@@ -482,10 +482,10 @@ Especially when we talk about line breaks inside YAML.
       with:
         auth_file: ${{ secrets.GCP_SA_KEY }}
         action: 'run'
-        name: "$PROD_SERVICE"
+        name: ${{ env.PROD_SERVICE" }}
         region: 'europe-west1'
         allow: true
-        image: "gcr.io/{{ secrets.PROJECT_ID }}/$APP_NAME:${{ github.sha }}"
+        image: "gcr.io/{{ secrets.PROJECT_ID }}/${{ env.APP_NAME}}:${{ github.sha }}"
     ```
 
 ## Summary
