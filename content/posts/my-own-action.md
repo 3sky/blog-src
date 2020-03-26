@@ -1,6 +1,6 @@
 +++
 draft = false
-date = 2020-03-26T20:55:02Z
+date = 2020-03-26T20:30:02Z
 title = "Build your onw GitHub Action"
 description = "Sometimes I need more custom solution or more elegant"
 slug = ""
