@@ -59,7 +59,7 @@ plan and ingredients list. So let's start.
 
 - [ ] Change temperature to 180 Celsius degrees
 
-   - [ ] After warm the oven to correct temperate wait 20minuts
+  - [ ] After warm the oven to correct temperate wait 20minuts
 
 1. Done!
 
