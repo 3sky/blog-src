@@ -29,37 +29,37 @@ plan and ingredients list. So let's start.
 
 ## Steps
 
-- [ ] Mix all ingredients in bowl
+- Mix all ingredients in bowl
 
-  - [ ] raw dough should be bit sticky
-  - [ ] do not add to many flour
+  - raw dough should be bit sticky
+  - do not add to many flour
 
-- [ ] Cover the bowl with a cloth and put into the oven
+- Cover the bowl with a cloth and put into the oven
 
-  - [ ] 30 Celsius degrees
-  - [ ] at least 2 hour
-  - [ ] dough should grow around 70%
+  - 30 Celsius degrees
+  - at least 2 hour
+  - dough should grow around 70%
 
-- [ ] Put it out and make buns
+- Put it out and make buns
 
-  - [ ] throw flour on table
-  - [ ] make at least 4 buns
-  - [ ] small, flat shapes
+  - throw flour on table
+  - make at least 4 buns
+  - small, flat shapes
 
-- [ ] Put it again into the oven
+- Put it again into the oven
 
-  - [ ] wait for extra grow
-  - [ ] around 30minuts
+  - wait for extra grow
+  - around 30minuts
 
-- [ ] Slit top part of row buns
+- Slit top part of row buns
 
-  - [ ] make `X` or `|` with a knife
-  - [ ] smear with water
-  - [ ] sprinkle with sesame seeds or other seeds
+  - make `X` or `|` with a knife
+  - smear with water
+  - sprinkle with sesame seeds or other seeds
 
-- [ ] Change temperature to 180 Celsius degrees
+- Change temperature to 180 Celsius degrees
 
-  - [ ] After warm the oven to correct temperate wait 20minuts
+  - After warm the oven to correct temperate wait 20minuts
 
 1. Done!
 
