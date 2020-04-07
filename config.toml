@@ -47,7 +47,11 @@ disqusShortname = "3sky"
 [[menu.main]]
     name = "Blog"
     weight = 1
-    url  = "/posts/"
+    url  = "/blog/"
+[[menu.main]]
+    name = "Cookbook"
+    weight = 1
+    url  = "/cookbook/"
 [[menu.main]]
     name = "About"
     weight = 2
