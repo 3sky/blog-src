@@ -1,3 +1,4 @@
+---
 name: CI
 
 on: [push]
@@ -8,33 +9,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Install Hugo
-      run: | 
-        wget https://github.com/gohugoio/hugo/releases/download/v0.67.0/hugo_0.67.0_Linux-64bit.deb
-        sudo dpkg -i hugo_0.67.0_Linux-64bit.deb
-        git submodule add https://github.com/luizdepra/hugo-coder.git themes/hugo-coder
-    - name: Install ruby-dev
-      run: sudo apt-get install ruby-dev
-    - name: Install depedances for mdl
-      run: sudo gem install rake bundler mdl && sudo gem update --system 3.0.6
-    - name: Setup GCP
-      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-      with:
-        version: '281.0.0'
-        service_account_email: ${{ secrets.GCP_SA_EMAIL }}
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
-        export_default_credentials: true
-    - name: Get grammary-cli
-      run: |
-        gsutil cp gs://grammarybot-cli/grammary-cli .
-        chmod +x grammary-cli      
-    - name: Run tests
-      run: | 
-        mdl --r ~MD013,~MD034 content/*
-    - name: Run deploy.sh
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: sh ./deploy.sh
+      - uses: actions/checkout@v2
+      - name: Install Hugo
+        run: |
+          wget https://github.com/gohugoio/hugo/releases/download/v0.72.0/hugo_extended_0.72.0_Linux-64bit.deb
+          sudo dpkg -i hugo_extended_0.72.0_Linux-64bit.deb
+          git submodule add https://github.com/luizdepra/hugo-coder.git themes/hugo-coder
+      - name: Install ruby-dev
+        run: sudo apt-get install ruby-dev
+      - name: Install depedances for mdl
+        run: sudo gem install rake bundler mdl && sudo gem update --system 3.0.6
+      - name: Setup GCP
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: '281.0.0'
+          service_account_email: ${{ secrets.GCP_SA_EMAIL }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+      - name: Get grammary-cli
+        run:|
+          gsutil cp gs://grammarybot-cli/grammary-cli .
+          chmod +x grammary-cli
+      - name: Run tests
+        run:|
+          mdl --r ~MD013,~MD034 content/*
+      - name: Run deploy.sh
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: sh ./deploy.sh
