@@ -14,7 +14,7 @@ jobs:
         run: |
           wget https://github.com/gohugoio/hugo/releases/download/v0.72.0/hugo_extended_0.72.0_Linux-64bit.deb
           sudo dpkg -i hugo_extended_0.72.0_Linux-64bit.deb
-          git submodule add https://github.com/luizdepra/hugo-coder.git themes/hugo-coder
+          git submodule add -f https://github.com/luizdepra/hugo-coder.git themes/hugo-coder
       - name: Install ruby-dev
         run: sudo apt-get install ruby-dev
       - name: Install depedances for mdl
