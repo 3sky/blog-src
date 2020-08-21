@@ -53,6 +53,10 @@ disqusShortname = "3sky"
     weight = 1
     url  = "/cookbook/"
 [[menu.main]]
+    name = "Photo"
+    weight = 1
+    url  = "/photo/"
+[[menu.main]]
     name = "About"
     weight = 2
     url = "/about/"
