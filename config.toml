@@ -11,6 +11,8 @@ enableRobotsTXT= true
 googleAnalytics = "UA-159451243-1"
 disqusShortname = "3sky"
 
+colorscheme = "auto"
+
 [params]
     author = "Jakub Wołynko"
     info = "IT Developer"
@@ -39,10 +41,15 @@ disqusShortname = "3sky"
     weight = 2
     url = "https://www.linkedin.com/in/jakubwolynko/"
 [[params.social]]
-    name = "Twitter"
-    icon = "fab fa-twitter fa-2x"
-    weight = 3
-    url = "https://twitter.com/kuba_wolynko/"
+   name = "Twitter"
+   icon = "fab fa-twitter fa-2x"
+   weight = 3
+   url = "https://twitter.com/kuba_wolynko/"
+[[params.social]]
+    name = "Instagram"
+    icon = "fab fa-instagram"
+    weight = 4
+    url = "https://instagram.com/kubawolynko/"
 # Menu links
 [[menu.main]]
     name = "Blog"
@@ -52,10 +59,6 @@ disqusShortname = "3sky"
     name = "Cookbook"
     weight = 1
     url  = "/cookbook/"
-[[menu.main]]
-    name = "Photo"
-    weight = 1
-    url  = "/photo/"
 [[menu.main]]
     name = "About"
     weight = 2

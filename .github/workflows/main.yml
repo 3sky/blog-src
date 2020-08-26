@@ -3,6 +3,10 @@ name: CI
 
 on: [push]
 
+env:
+  hugo_version: "74.3"
+  gcp_version: "290.1"
+
 jobs:
   build:
 
@@ -12,28 +16,25 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install Hugo
         run: |
-          wget https://github.com/gohugoio/hugo/releases/download/v0.74.3/hugo_extended_0.74.3_Linux-64bit.deb
-          sudo dpkg -i hugo_extended_0.74.3_Linux-64bit.deb
-          git submodule add -f https://github.com/luizdepra/hugo-coder.git themes/hugo-coder
-      - name: Install ruby-dev
-        run: sudo apt-get install ruby-dev
-      - name: Install depedances for mdl
-        run: sudo gem install rake bundler mdl && sudo gem update --system 3.0.6
+          wget https://github.com/gohugoio/hugo/releases/download/v0.${hugo_version}/hugo_extended_0.${hugo_version}_Linux-64bit.deb
+          sudo dpkg -i hugo_extended_0.${hugo_version}_Linux-64bit.deb
+          git submodule add -f https://github.com/3sky/hugo-coder.git themes/hugo-coder
       - name: Setup GCP
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
-          version: '281.0.0'
+          version: ${gcp_version}
           service_account_email: ${{ secrets.GCP_SA_EMAIL }}
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
-      - name: Get grammary-cli
-        run: |
-          gsutil cp gs://grammarybot-cli/grammary-cli .
-          chmod +x grammary-cli
-      - name: Run tests
-        run: |
-          mdl --r ~MD013,~MD034 content/*
       - name: Run deploy.sh
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: sh ./deploy.sh
+        run: |
+          hugo
+          git clone https://github.com/3sky/3sky.github.io
+          cp -R public/* 3sky.github.io
+          cd 3sky.github.io
+          git config --global user.email "3sky@protonmail.com"
+          git config --global user.name "3sky"
+          git add -A
+          git commit --message "CI Build: ${{ github.sha }}"
+          git remote set-url origin https://3sky:${GH_TOKEN}@github.com/3sky/3sky.github.io.git >/dev/null 2>&1
+          git push --quiet --set-upstream origin master
