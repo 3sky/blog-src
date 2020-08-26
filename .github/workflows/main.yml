@@ -30,6 +30,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           hugo
+          ls -la
           git clone https://github.com/3sky/3sky.github.io
           cp -R public/* 3sky.github.io
           cd 3sky.github.io
